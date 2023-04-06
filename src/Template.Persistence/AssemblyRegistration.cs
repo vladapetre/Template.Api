@@ -8,7 +8,7 @@ namespace Template.Persistence;
 
 public static class AssemblyRegistration
 {
-    public static IServiceCollection RegisterPersistenceServices(this ServiceCollection services)
+    public static IServiceCollection AddPersistenceServices(this ServiceCollection services)
     {
 
         services.AddDbContext<TemplateContext>((options) =>

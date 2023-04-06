@@ -12,7 +12,7 @@
 					"Validator.cs": [
 						".cs"
 					],
-					"Result.cs": [
+					"Response.cs": [
 						".cs"
 					],
 					"Payload.cs": [

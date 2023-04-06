@@ -18,4 +18,9 @@
     <ProjectReference Include="..\Template.Persistence\Template.Persistence.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Commands\" />
+    <Folder Include="Queries\" />
+  </ItemGroup>
+
 </Project>

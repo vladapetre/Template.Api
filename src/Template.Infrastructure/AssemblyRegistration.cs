@@ -4,7 +4,7 @@ namespace Template.Infrastructure;
 
 public static class AssemblyRegistration
 {
-    public static IServiceCollection RegisterInfrastructureServices(this ServiceCollection services)
+    public static IServiceCollection AddInfrastructureServices(this ServiceCollection services)
     {
         return services;
     }
