@@ -4,7 +4,7 @@ namespace Template.Domain;
 
 public static class AssemblyRegistration
 {
-    public static IServiceCollection AddDomainServices(this ServiceCollection services)
+    public static IServiceCollection AddDomainServices(this IServiceCollection services)
     {
         return services;
     }

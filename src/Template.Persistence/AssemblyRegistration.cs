@@ -8,12 +8,12 @@ namespace Template.Persistence;
 
 public static class AssemblyRegistration
 {
-    public static IServiceCollection AddPersistenceServices(this ServiceCollection services)
+    public static IServiceCollection AddPersistenceServices(this IServiceCollection services)
     {
 
         services.AddDbContext<TemplateContext>((options) =>
         {
-            options.UseSqlServer("name=ConnectionStrings:DefaultConnection");
+            options.UseSqlServer("name=ConnectionStrings:TemplateContext");
         });
 
 

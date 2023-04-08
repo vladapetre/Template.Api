@@ -1,4 +1,6 @@
-﻿using Template.Domain.Models.Template.Repositories;
+﻿using Microsoft.EntityFrameworkCore;
+using Template.Domain.Models.Template;
+using Template.Domain.Models.Template.Repositories;
 using Template.Domain.Primitives;
 using Template.Persistence.Contexts;
 
@@ -13,5 +15,10 @@ internal class TemplateRepository : ITemplateRepository
         _context = context;
     }
 
-    public IUnitOfWork UnitOfWork => throw new NotImplementedException();
+    public IUnitOfWork UnitOfWork => _context;
+
+    public async Task<IList<TemplateAggregateRoot>> GetAllAsync()
+    {
+        return await _context.Template.ToListAsync();
+    }
 }
