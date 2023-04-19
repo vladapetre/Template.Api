@@ -3,7 +3,7 @@ using Template.Domain.Models.Template;
 using Template.Domain.Models.Template.Repositories;
 using Template.Domain.Models.Template.Views;
 using Template.Domain.Primitives;
-using Template.Persistence.Contexts;
+using Template.Persistence.Contexts.Template;
 
 namespace Template.Persistence.Template.Repositories;
 

@@ -1,7 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Template.Domain.Models.Template.Repositories;
-using Template.Persistence.Contexts;
+using Template.Persistence.Contexts.Template;
 using Template.Persistence.Template.Repositories;
 
 namespace Template.Persistence;
@@ -19,5 +20,16 @@ public static class AssemblyRegistration
 
         services.AddTransient<ITemplateRepository, TemplateRepository>();
         return services;
+    }
+
+    public static IHost UsePersistenceServices(this IHost host)
+    {
+        using (var scope = host.Services.CreateScope())
+        {
+            var database = scope.ServiceProvider.GetRequiredService<TemplateContext>();
+            database.Database.Migrate();
+        }
+
+        return host;
     }
 }

@@ -2,6 +2,8 @@ services:
   host:
     environment:
       ASPNETCORE_ENVIRONMENT: Development
+    image: host
+    container_name: host
     build:
       context: .
       dockerfile: .devops/docker/dockerfile

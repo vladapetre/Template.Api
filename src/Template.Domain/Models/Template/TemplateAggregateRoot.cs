@@ -8,6 +8,8 @@ public sealed class TemplateAggregateRoot : IEntity, IAggregateRoot
 
     public TemplateStatus Status { get; private set; }
 
+    private TemplateAggregateRoot() { }
+
     private TemplateAggregateRoot(TemplateStatus status, TemplateDescription description) 
     {
         Status = status;

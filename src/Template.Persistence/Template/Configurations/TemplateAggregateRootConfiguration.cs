@@ -7,12 +7,13 @@ namespace Template.Persistence.Template.Configurations;
 
 public sealed class TemplateAggregateRootConfiguration : IEntityTypeConfiguration<TemplateAggregateRoot>
 {
-    public string TableName => "Template";
+    private const string TEMPLATE_TABLE_NAME = "Template";
+    private const string TEMPLATE_DESCRIPTION_TABLE_NAME = "TemplateDescription";
 
     public void Configure(EntityTypeBuilder<TemplateAggregateRoot> builder)
     {
         builder
-            .ToTable(TableName);
+            .ToTable(TEMPLATE_TABLE_NAME);
 
         builder
             .HasKey(template => template.Id);
@@ -22,6 +23,9 @@ public sealed class TemplateAggregateRootConfiguration : IEntityTypeConfiguratio
             .HasConversion<TemplateStatusConverter>();
 
         builder
-            .OwnsOne(template => template.Description);
+            .OwnsOne(template => template.Description, owned =>
+            {
+                owned.ToTable(TEMPLATE_DESCRIPTION_TABLE_NAME);
+            });
     }
 }

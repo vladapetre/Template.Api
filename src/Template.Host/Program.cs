@@ -26,6 +26,8 @@ builder.Services
 
 var app = builder.Build();
 
+app.UsePersistenceServices();
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
