@@ -1,7 +1,8 @@
 ﻿using Template.Domain.Models.Template;
+using Template.Infrastructure.Mappers;
 
 namespace Template.Infrastructure.Template.Mappers;
-internal sealed class TemplateToObjectMapper : ITemplateMapper<TemplateAggregateRoot, object>
+internal sealed class TemplateToObjectMapper : IMapper<TemplateAggregateRoot, object>
 {
     public Task<object?> Map(TemplateAggregateRoot from)
     {

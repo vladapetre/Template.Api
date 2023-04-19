@@ -20,7 +20,7 @@ public class ValidatorBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest
     {
         var typeName = request.GetGenericTypeName();
 
-        _logger.LogInformation("----- Validating command {CommandType}", typeName);
+        _logger.LogInformation("----- Validating request {RequestType}", typeName);
 
         var failures = _validators
             .Select(v => v.Validate(request))
@@ -30,10 +30,10 @@ public class ValidatorBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest
 
         if (failures.Any())
         {
-            _logger.LogWarning("Validation errors - {CommandType} - Command: {@Command} - Errors: {@ValidationErrors}", typeName, request, failures);
+            _logger.LogWarning("Validation errors - {RequestType} - Request: {@Request} - Errors: {@ValidationErrors}", typeName, request, failures);
 
             throw new TemplateDomainException(
-                $"Command Validation Errors for type {typeof(TRequest).Name}", new ValidationException("Validation exception", failures));
+                $"Request Validation Errors for type {typeof(TRequest).Name}", new ValidationException("Validation exception", failures));
         }
 
         return await next();

@@ -1,4 +1,3 @@
-using Microsoft.Extensions.Configuration;
 using Serilog;
 using Template.Application;
 using Template.Infrastructure;

@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Template.Domain.Models.Template.Repositories;
 using Template.Persistence.Contexts;
-using Template.Persistence.Repositories;
+using Template.Persistence.Template.Repositories;
 
 namespace Template.Persistence;
 

@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Template.Domain.Models.Template;
 using Template.Domain.Primitives;
-using Template.Persistence.Configurations.Template;
+using Template.Persistence.Template.Configurations;
 
 namespace Template.Persistence.Contexts;
 
@@ -19,7 +19,7 @@ internal sealed class TemplateContext : DbContext, IUnitOfWork
 
     public async Task<bool> SaveEntitiesAsync(CancellationToken cancellationToken = default)
     {
-        var result = await base.SaveChangesAsync(cancellationToken);
+        await SaveChangesAsync(cancellationToken);
 
         return true;
     }
