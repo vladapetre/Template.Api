@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Template.Persistence", "src
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Template.Presentation", "src\Template.Presentation\Template.Presentation.csproj", "{C4C9AFAB-DC8F-45F7-941C-D0C9CAF97850}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template.Api", "src\Template.Api\Template.Api.csproj", "{BAF7314F-6839-4F77-B353-0DCC2218FE8D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template.Host", "src\Template.Host\Template.Host.csproj", "{BAF7314F-6839-4F77-B353-0DCC2218FE8D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

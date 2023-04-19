@@ -21,6 +21,10 @@ containers
 winget install --id RedHat.Podman
 https://github.com/containers/podman/blob/main/docs/tutorials/podman-for-windows.md
 
+
+winget install --id Docker.DockerDesktop
+
+
 docker/podman run --name=mssql-server -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=pa55Paro!a" -p 1433:1433 -d mcr.microsoft.com/mssql/server:2022-latest
 
 
