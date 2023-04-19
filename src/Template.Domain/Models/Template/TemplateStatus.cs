@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Template.Domain.Exceptions;
+﻿using Template.Domain.Exceptions;
 using Template.Domain.Primitives;
 
 namespace Template.Domain.Models.Template;
@@ -20,7 +15,7 @@ public class TemplateStatus : IEnumeration
 
 
     public static IEnumerable<TemplateStatus> List() =>
-        new[] {Draft, Completed};
+        new[] { Draft, Completed };
 
 
     public static TemplateStatus FromName(string name)

@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Template.Domain.Primitives;
 
-namespace Template.Domain.Primitives;
-
-public interface IRepository<T> where T: IEntity
+public interface IRepository<T> where T : IEntity
 {
     IUnitOfWork UnitOfWork { get; }
 }

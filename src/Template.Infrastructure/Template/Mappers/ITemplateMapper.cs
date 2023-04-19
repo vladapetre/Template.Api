@@ -1,5 +1,4 @@
-﻿using Template.Domain.Models.Template;
-using Template.Domain.Primitives;
+﻿using Template.Domain.Primitives;
 using Template.Infrastructure.Mappers;
 
 namespace Template.Infrastructure.Template.Mappers

@@ -11,7 +11,7 @@ public static class AssemblyRegistration
 
         services
             .AddControllers()
-            .AddApplicationPart(assembly); 
+            .AddApplicationPart(assembly);
 
         return services;
     }

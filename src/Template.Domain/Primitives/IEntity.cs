@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Template.Domain.Primitives;
 
-namespace Template.Domain.Primitives;
-
-public abstract class IEntity 
+public abstract class IEntity
 {
     int? _requestedHashCode;
     int _id;
