@@ -19,7 +19,7 @@ public class TemplateController : ControllerBase
         _templateToObjectMapper = templateToObjectMapper;
     }
 
-    [HttpGet]
+    [HttpGet] 
     public async Task<ActionResult<IEnumerable<object>>> Get()
     {
         var getTemplatesQuery = new GetTemplatesQuery();
