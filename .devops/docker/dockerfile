@@ -19,6 +19,8 @@ RUN for file in $(ls *.csproj); do mkdir -p tests/${file%.*}/ && mv $file tests/
 RUN dotnet restore "Template.sln"
 COPY . .
 RUN dotnet build "Template.sln"  -c Release -o /app/build 
+RUN dotnet test "Template.sln"  -c Release 
+
 
 FROM build AS publish
 RUN dotnet publish "Template.sln" -c Release -o /app/publish /p:UseAppHost=false
