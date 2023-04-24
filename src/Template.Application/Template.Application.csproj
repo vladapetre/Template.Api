@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Template\Commands\" />
+    <Folder Include="Example\Commands\" />
   </ItemGroup>
 
 </Project>

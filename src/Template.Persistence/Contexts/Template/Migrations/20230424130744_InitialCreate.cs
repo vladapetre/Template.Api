@@ -11,7 +11,7 @@ public partial class InitialCreate : Migration
     protected override void Up(MigrationBuilder migrationBuilder)
     {
         migrationBuilder.CreateTable(
-            name: "Template",
+            name: "Example",
             columns: table => new
             {
                 Id = table.Column<int>(type: "int", nullable: false)
@@ -20,24 +20,24 @@ public partial class InitialCreate : Migration
             },
             constraints: table =>
             {
-                table.PrimaryKey("PK_Template", x => x.Id);
+                table.PrimaryKey("PK_Example", x => x.Id);
             });
 
         migrationBuilder.CreateTable(
-            name: "TemplateDescription",
+            name: "ExampleDescription",
             columns: table => new
             {
-                TemplateAggregateRootId = table.Column<int>(type: "int", nullable: false),
+                ExampleAggregateRootId = table.Column<int>(type: "int", nullable: false),
                 Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                 Version = table.Column<string>(type: "nvarchar(max)", nullable: false)
             },
             constraints: table =>
             {
-                table.PrimaryKey("PK_TemplateDescription", x => x.TemplateAggregateRootId);
+                table.PrimaryKey("PK_ExampleDescription", x => x.ExampleAggregateRootId);
                 table.ForeignKey(
-                    name: "FK_TemplateDescription_Template_TemplateAggregateRootId",
-                    column: x => x.TemplateAggregateRootId,
-                    principalTable: "Template",
+                    name: "FK_ExampleDescription_Example_ExampleAggregateRootId",
+                    column: x => x.ExampleAggregateRootId,
+                    principalTable: "Example",
                     principalColumn: "Id",
                     onDelete: ReferentialAction.Cascade);
             });
@@ -47,9 +47,9 @@ public partial class InitialCreate : Migration
     protected override void Down(MigrationBuilder migrationBuilder)
     {
         migrationBuilder.DropTable(
-            name: "TemplateDescription");
+            name: "ExampleDescription");
 
         migrationBuilder.DropTable(
-            name: "Template");
+            name: "Example");
     }
 }

@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Template.Domain.Models.Template;
+using Template.Domain.Models.Example;
 using Template.Domain.Primitives;
-using Template.Persistence.Template.Configurations;
+using Template.Persistence.Example.Configurations;
 
 namespace Template.Persistence.Contexts.Template;
 
@@ -12,7 +12,7 @@ internal sealed class TemplateContext : DbContext, IUnitOfWork
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
 
-        modelBuilder.ApplyConfiguration(new TemplateAggregateRootConfiguration());
+        modelBuilder.ApplyConfiguration(new ExampleAggregateRootConfiguration());
 
         base.OnModelCreating(modelBuilder);
     }
@@ -24,5 +24,5 @@ internal sealed class TemplateContext : DbContext, IUnitOfWork
         return true;
     }
 
-    public DbSet<TemplateAggregateRoot> Template { get; set; }
+    public DbSet<ExampleAggregateRoot> Example { get; set; }
 }

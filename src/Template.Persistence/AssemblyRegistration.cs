@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Template.Domain.Models.Template.Repositories;
+using Template.Domain.Models.Example.Repositories;
 using Template.Persistence.Contexts.Template;
-using Template.Persistence.Template.Repositories;
+using Template.Persistence.Example.Repositories;
 
 namespace Template.Persistence;
 
@@ -18,7 +18,7 @@ public static class AssemblyRegistration
         });
 
 
-        services.AddTransient<ITemplateRepository, TemplateRepository>();
+        services.AddTransient<IExampleRepository, ExampleRepository>();
         return services;
     }
 
