@@ -25,7 +25,7 @@ public class ExampleStatus : IEnumeration
 
         if (state == null)
         {
-            throw new TemplateDomainException($"Possible values for TemplateType: {string.Join(",", List().Select(s => s.Name))}");
+            throw new DomainException($"Possible values for TemplateType: {string.Join(",", List().Select(s => s.Name))}");
         }
 
         return state;
@@ -37,7 +37,7 @@ public class ExampleStatus : IEnumeration
 
         if (state == null)
         {
-            throw new TemplateDomainException($"Possible values for TemplateType: {string.Join(",", List().Select(s => s.Name))}");
+            throw new DomainException($"Possible values for TemplateType: {string.Join(",", List().Select(s => s.Name))}");
         }
 
         return state;

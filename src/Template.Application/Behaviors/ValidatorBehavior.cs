@@ -2,10 +2,11 @@
 using MediatR;
 using Microsoft.Extensions.Logging;
 using Template.Application.Extensions;
-using Template.Domain.Exceptions;
+using Template.Application.Responses;
 
 namespace Template.Application.Behaviors;
 public class ValidatorBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
+    where TResponse : IApplicationResponse, new()
 {
     private readonly ILogger<ValidatorBehavior<TRequest, TResponse>> _logger;
     private readonly IEnumerable<IValidator<TRequest>> _validators;
@@ -32,8 +33,10 @@ public class ValidatorBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest
         {
             _logger.LogWarning("Validation errors - {RequestType} - Request: {@Request} - Errors: {@ValidationErrors}", typeName, request, failures);
 
-            throw new TemplateDomainException(
-                $"Request Validation Errors for type {typeof(TRequest).Name}", new ValidationException("Validation exception", failures));
+            return new TResponse
+            {
+                Error = new(500, string.Join(",", failures.Select(failure => failure.ToString())))
+            };
         }
 
         return await next();

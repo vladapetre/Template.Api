@@ -22,10 +22,15 @@ public class ExampleController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<ExampleAggregateRoot>>> Get()
     {
-        var getTemplatesQuery = new GetExamplesQuery();
+        var getExamplesQuery = new GetExamplesQuery();
 
-        var getTemplatesQueryResponse = await _mediator.Send(getTemplatesQuery);
+        var getExamplesQueryResponse = await _mediator.Send(getExamplesQuery);
 
-        return Ok(getTemplatesQueryResponse.Examples);
+        if (getExamplesQueryResponse.Error is not null)
+        {
+            return StatusCode(getExamplesQueryResponse.Error.Code, getExamplesQueryResponse.Error);
+        }
+
+        return Ok(getExamplesQueryResponse.Result);
     }
 }

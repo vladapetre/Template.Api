@@ -1,7 +1,8 @@
-﻿using MediatR;
+﻿using Template.Application.Requests;
+using Template.Application.Responses;
 
 namespace Template.Application.Example.Queries;
 
-public sealed class GetExamplesQuery : IRequest<GetExamplesQueryResponse>
+public sealed class GetExamplesQuery : IApplicationRequest<ApplicationResponse<GetExamplesQueryResponse>>
 {
 }

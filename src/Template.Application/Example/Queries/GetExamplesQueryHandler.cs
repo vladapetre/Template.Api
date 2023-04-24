@@ -1,9 +1,11 @@
 ﻿using MediatR;
+using Template.Application.Responses;
+using Template.Domain.Exceptions;
 using Template.Domain.Models.Example.Repositories;
 
 namespace Template.Application.Example.Queries;
 
-internal sealed class GetExamplesQueryHandler : IRequestHandler<GetExamplesQuery, GetExamplesQueryResponse>
+internal sealed class GetExamplesQueryHandler : IRequestHandler<GetExamplesQuery, ApplicationResponse<GetExamplesQueryResponse>>
 {
     private readonly IExampleRepository _exampleRepository;
 
@@ -12,9 +14,20 @@ internal sealed class GetExamplesQueryHandler : IRequestHandler<GetExamplesQuery
         _exampleRepository = exampleRepository;
     }
 
-    public async Task<GetExamplesQueryResponse> Handle(GetExamplesQuery request, CancellationToken cancellationToken)
+    public async Task<ApplicationResponse<GetExamplesQueryResponse>> Handle(GetExamplesQuery request, CancellationToken cancellationToken)
     {
-        var examples = await _exampleRepository.GetAllAsync();
-        return new(examples);
+        try
+        {
+            var examples = await _exampleRepository.GetAllAsync();
+            return new GetExamplesQueryResponse(examples);
+        }
+        catch (DomainException domainException)
+        {
+            return ApplicationResponse.BadRequest(domainException.Message);
+        }
+        catch (Exception generalException)
+        {
+            return ApplicationResponse.InternalServerError(generalException.Message);
+        }
     }
 }

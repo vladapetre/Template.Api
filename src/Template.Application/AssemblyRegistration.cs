@@ -15,6 +15,7 @@ public static class AssemblyRegistration
             configuration.RegisterServicesFromAssembly(assembly);
 
             configuration.AddOpenBehavior(typeof(LoggingBehavior<,>));
+            configuration.AddOpenBehavior(typeof(ExceptionHandlingBehavior<,>));
             configuration.AddOpenBehavior(typeof(ValidatorBehavior<,>));
         });
 
