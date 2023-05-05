@@ -1,17 +1,22 @@
-﻿using System.Net;
-using Template.Application.Errors;
+﻿using Template.Application.Responses.Statuses;
 
 namespace Template.Application.Responses;
 
 public sealed class ApplicationResponse : IApplicationResponse
 {
-    public ApplicationError? Error { get; init; }
+    public ApplicationStatus Status { get; init; } = default!;
 
+    public string? Message { get; init; }
 
-    public static ApplicationResponse Ok(string? message = null) => new() { Error = default };
-    public static ApplicationResponse InternalServerError(string? message = null) => new() { Error = new((int)HttpStatusCode.InternalServerError, message ?? nameof(InternalServerError)) };
-    public static ApplicationResponse BadRequest(string? message = null) => new() { Error = new((int)HttpStatusCode.BadRequest, message ?? nameof(BadRequest)) };
-    public static ApplicationResponse NotFound(string? message = null) => new() { Error = new((int)HttpStatusCode.NotFound, message ?? nameof(NotFound)) };
-    public static ApplicationResponse Unauthorized(string? message = null) => new() { Error = new((int)HttpStatusCode.Unauthorized, message ?? nameof(Unauthorized)) };
-    public static ApplicationResponse Forbidden(string? message = null) => new() { Error = new((int)HttpStatusCode.Forbidden, message ?? nameof(Forbidden)) };
+    public static ApplicationResponse Ok(string? message = null) => new() { Status = ApplicationStatus.Ok, Message = message };
+
+    public static ApplicationResponse InternalServerError(string? message = null) => new() { Status = ApplicationStatus.InternalServerError, Message = message };
+
+    public static ApplicationResponse BadRequest(string? message = null) => new() { Status = ApplicationStatus.BadRequest, Message = message };
+
+    public static ApplicationResponse NotFound(string? message = null) => new() { Status = ApplicationStatus.NotFound, Message = message };
+
+    public static ApplicationResponse Unauthorized(string? message = null) => new() { Status = ApplicationStatus.Unauthorized, Message = message };
+
+    public static ApplicationResponse Forbidden(string? message = null) => new() { Status = ApplicationStatus.Forbidden, Message = message };
 }

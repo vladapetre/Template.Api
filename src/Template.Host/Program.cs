@@ -4,19 +4,15 @@ using Template.Infrastructure;
 using Template.Persistence;
 using Template.Presentation;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-
 builder.Host.UseSerilog((context, services, configuration) => configuration.ReadFrom.Configuration(context.Configuration));
-
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
 
 builder.Services
     .AddApplicationServices()
@@ -44,5 +40,3 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-
-

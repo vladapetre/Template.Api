@@ -35,7 +35,7 @@ public class ValidatorBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest
 
             return new TResponse
             {
-                Error = new(500, string.Join(",", failures.Select(failure => failure.ToString())))
+                Status = new(500, string.Join(",", failures.Select(failure => failure.ToString())))
             };
         }
 

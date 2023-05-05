@@ -4,6 +4,7 @@ using Template.Application.Extensions;
 using Template.Application.Responses;
 
 namespace Template.Application.Behaviors;
+
 public class ExceptionHandlingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
     where TResponse : IApplicationResponse, new()
 {
@@ -28,7 +29,7 @@ public class ExceptionHandlingBehavior<TRequest, TResponse> : IPipelineBehavior<
 
             return new TResponse
             {
-                Error = new(500, exception.Message)
+                Status = new(500, exception.Message)
             };
         }
     }

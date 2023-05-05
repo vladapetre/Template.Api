@@ -26,9 +26,9 @@ public class ExampleController : ControllerBase
 
         var getExamplesQueryResponse = await _mediator.Send(getExamplesQuery);
 
-        if (getExamplesQueryResponse.Error is not null)
+        if (getExamplesQueryResponse.Status.Successful)
         {
-            return StatusCode(getExamplesQueryResponse.Error.Code, getExamplesQueryResponse.Error);
+            return StatusCode(getExamplesQueryResponse.Status.Code, getExamplesQueryResponse.Message);
         }
 
         return Ok(getExamplesQueryResponse.Result);

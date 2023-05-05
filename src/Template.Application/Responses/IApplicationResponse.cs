@@ -1,8 +1,9 @@
-﻿using Template.Application.Errors;
+﻿using Template.Application.Responses.Statuses;
 
 namespace Template.Application.Responses;
 
 public interface IApplicationResponse
 {
-    public ApplicationError? Error { get; init; }
+    public ApplicationStatus Status { get; init; }
+    public string? Message { get; init; }
 }
