@@ -4,9 +4,9 @@ namespace Template.Domain.Models.Example;
 
 public sealed class ExampleAggregateRoot : IEntity, IAggregateRoot
 {
-    public ExampleDescription Description { get; private set; }
+    public ExampleDescription Description { get; private set; } = default!;
 
-    public ExampleStatus Status { get; private set; }
+    public ExampleStatus Status { get; private set; } = default!;
 
     private ExampleAggregateRoot() { }
 

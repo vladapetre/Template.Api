@@ -1,4 +1,4 @@
-﻿using Template.Application.Responses.Errors;
+﻿using Template.Application.Responses.Statuses;
 
 namespace Template.Application.Responses;
 
