@@ -17,12 +17,5 @@ internal sealed class TemplateContext : DbContext, IUnitOfWork
         base.OnModelCreating(modelBuilder);
     }
 
-    public async Task<bool> SaveEntitiesAsync(CancellationToken cancellationToken = default)
-    {
-        await SaveChangesAsync(cancellationToken);
-
-        return true;
-    }
-
     public DbSet<ExampleAggregateRoot> Example { get; set; }
 }

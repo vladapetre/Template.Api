@@ -1,4 +1,5 @@
-﻿using Template.Domain.Primitives;
+﻿using Template.Domain.Models.Example.Events;
+using Template.Domain.Primitives;
 
 namespace Template.Domain.Models.Example;
 
@@ -14,6 +15,8 @@ public sealed class ExampleAggregateRoot : IEntity, IAggregateRoot
     {
         Status = status;
         Description = description;
+
+        AddEvent(new ExampleCreatedEvent(Id, Status));
     }
 
     public static ExampleAggregateRoot CreateTemplate(string name, string version) => new(ExampleStatus.Draft, new ExampleDescription(name, version));

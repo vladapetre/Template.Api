@@ -18,11 +18,14 @@ builder.Services
     .AddApplicationServices()
     .AddPersistenceServices()
     .AddInfrastructureServices()
-    .AddPresentationServices();
+    .AddPresentationServices()
+    .AddOutboxServices();
 
 var app = builder.Build();
 
-app.UsePersistenceServices();
+app
+    .UsePersistenceServices()
+    .UseOutboxServices();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

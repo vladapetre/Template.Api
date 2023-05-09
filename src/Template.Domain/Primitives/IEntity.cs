@@ -16,6 +16,24 @@ public abstract class IEntity
         }
     }
 
+    private List<IEvent> _events = new();
+    public IReadOnlyCollection<IEvent> Events => _events.AsReadOnly();
+
+    internal void AddEvent(IEvent @event)
+    {
+        if (_events is null) _events = new();
+        _events.Add(@event);
+    }
+
+    internal void RemoveEvent(IEvent @event)
+    {
+        _events.Remove(@event);
+    }
+
+    public void ClearEvents()
+    {
+        _events.Clear();
+    }
 
     public bool IsTransient()
     {

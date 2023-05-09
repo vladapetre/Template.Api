@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Template.Infrastructure.Http.Client;
+﻿using Template.Infrastructure.Http.Client;
 
 namespace Template.Infrastructure.Example.Services;
 internal sealed class ExampleHttpClientService : IHttpClient

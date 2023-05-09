@@ -19,15 +19,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Template.Host", "src\Templa
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{BDD917E1-2801-4633-B0BA-DAC6DB0BE653}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template.Application.Tests", "tests\Template.Application.Tests\Template.Application.Tests.csproj", "{E2FE9BD3-FF7F-4D0C-AC39-BF519BEB6812}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Template.Application.Tests", "tests\Template.Application.Tests\Template.Application.Tests.csproj", "{E2FE9BD3-FF7F-4D0C-AC39-BF519BEB6812}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template.Domain.Tests", "tests\Template.Domain.Tests\Template.Domain.Tests.csproj", "{259631DA-CFD4-4349-A115-54BAF261F8CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Template.Domain.Tests", "tests\Template.Domain.Tests\Template.Domain.Tests.csproj", "{259631DA-CFD4-4349-A115-54BAF261F8CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template.Infrastructure.Tests", "tests\Template.Infrastructure.Tests\Template.Infrastructure.Tests.csproj", "{EE64D3FF-EA48-46FA-B229-F46D179E77CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Template.Infrastructure.Tests", "tests\Template.Infrastructure.Tests\Template.Infrastructure.Tests.csproj", "{EE64D3FF-EA48-46FA-B229-F46D179E77CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template.Persistence.Tests", "tests\Template.Persistence.Tests\Template.Persistence.Tests.csproj", "{D3D980E8-5403-438B-90FD-0C3245250D9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Template.Persistence.Tests", "tests\Template.Persistence.Tests\Template.Persistence.Tests.csproj", "{D3D980E8-5403-438B-90FD-0C3245250D9C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template.Presentation.Tests", "tests\Template.Presentation.Tests\Template.Presentation.Tests.csproj", "{F2823E7E-2A86-4B07-83D9-4668FF3DEDB2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Template.Presentation.Tests", "tests\Template.Presentation.Tests\Template.Presentation.Tests.csproj", "{F2823E7E-2A86-4B07-83D9-4668FF3DEDB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template.Outbox", "src\Template.Outbox\Template.Outbox.csproj", "{31FA8CC3-A73B-4A03-8233-D8445422A3DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,6 +81,10 @@ Global
 		{F2823E7E-2A86-4B07-83D9-4668FF3DEDB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2823E7E-2A86-4B07-83D9-4668FF3DEDB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2823E7E-2A86-4B07-83D9-4668FF3DEDB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31FA8CC3-A73B-4A03-8233-D8445422A3DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31FA8CC3-A73B-4A03-8233-D8445422A3DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31FA8CC3-A73B-4A03-8233-D8445422A3DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31FA8CC3-A73B-4A03-8233-D8445422A3DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -95,6 +101,7 @@ Global
 		{EE64D3FF-EA48-46FA-B229-F46D179E77CE} = {BDD917E1-2801-4633-B0BA-DAC6DB0BE653}
 		{D3D980E8-5403-438B-90FD-0C3245250D9C} = {BDD917E1-2801-4633-B0BA-DAC6DB0BE653}
 		{F2823E7E-2A86-4B07-83D9-4668FF3DEDB2} = {BDD917E1-2801-4633-B0BA-DAC6DB0BE653}
+		{31FA8CC3-A73B-4A03-8233-D8445422A3DF} = {AE42476B-4AE4-451C-BB42-B275D21AA436}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {67884DA0-30BD-4E14-A31E-E0BEBB9E07A0}
