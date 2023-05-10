@@ -20,6 +20,12 @@ internal class ExampleRepository : IExampleRepository
 
     public async Task<IList<ExampleAggregateRoot>> GetAllAsync()
     {
+
+        var example = ExampleAggregateRoot.CreateTemplate("Test", $"{DateTime.UtcNow.Millisecond % 100}");
+
+        await _context.Example.AddAsync(example);
+        await _context.SaveChangesAsync();
+
         return await _context.Example.ToListAsync();
     }
 

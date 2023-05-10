@@ -11,7 +11,7 @@ using Template.Persistence.Contexts.Template;
 namespace Template.Persistence.Contexts.Template.Migrations
 {
     [DbContext(typeof(TemplateContext))]
-    [Migration("20230424130744_InitialCreate")]
+    [Migration("20230510072628_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -19,6 +19,7 @@ namespace Template.Persistence.Contexts.Template.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasDefaultSchema("template")
                 .HasAnnotation("ProductVersion", "7.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
@@ -37,7 +38,7 @@ namespace Template.Persistence.Contexts.Template.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Example", (string)null);
+                    b.ToTable("Example", "template");
                 });
 
             modelBuilder.Entity("Template.Domain.Models.Example.ExampleAggregateRoot", b =>
@@ -57,7 +58,7 @@ namespace Template.Persistence.Contexts.Template.Migrations
 
                             b1.HasKey("ExampleAggregateRootId");
 
-                            b1.ToTable("ExampleDescription", (string)null);
+                            b1.ToTable("ExampleDescription", "template");
 
                             b1.WithOwner()
                                 .HasForeignKey("ExampleAggregateRootId");

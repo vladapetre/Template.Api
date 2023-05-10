@@ -1,4 +1,4 @@
-﻿namespace Template.Application.Responses.Statuses;
+﻿namespace Template.Application.Mediator.Responses.Statuses;
 public sealed record ApplicationStatus(int Code, string Message)
 {
     public static ApplicationStatus Ok = new(200, "Success");

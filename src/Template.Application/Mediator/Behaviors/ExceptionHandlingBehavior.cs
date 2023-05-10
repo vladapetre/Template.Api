@@ -1,9 +1,9 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
 using Template.Application.Extensions;
-using Template.Application.Responses;
+using Template.Application.Mediator.Responses;
 
-namespace Template.Application.Behaviors;
+namespace Template.Application.Mediator.Behaviors;
 
 public class ExceptionHandlingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
     where TResponse : IApplicationResponse, new()

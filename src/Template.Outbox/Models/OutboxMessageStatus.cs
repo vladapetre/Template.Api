@@ -1,10 +1,10 @@
 ﻿namespace Template.Outbox.Models;
 internal class OutboxMessageStatus
 {
-    public static readonly OutboxMessageStatus Queued = new(1, nameof(Queued).ToLowerInvariant());
-    public static readonly OutboxMessageStatus Succeeded = new(2, nameof(Succeeded).ToLowerInvariant());
-    public static readonly OutboxMessageStatus Failed = new(2, nameof(Failed).ToLowerInvariant());
-    public static readonly OutboxMessageStatus Expired = new(2, nameof(Expired).ToLowerInvariant());
+    public static readonly OutboxMessageStatus Queued = new(1, nameof(Queued).ToUpperInvariant());
+    public static readonly OutboxMessageStatus Succeeded = new(2, nameof(Succeeded).ToUpperInvariant());
+    public static readonly OutboxMessageStatus Failed = new(3, nameof(Failed).ToUpperInvariant());
+    public static readonly OutboxMessageStatus Expired = new(4, nameof(Expired).ToUpperInvariant());
 
     public OutboxMessageStatus(int id, string name)
     {

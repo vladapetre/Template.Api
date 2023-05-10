@@ -1,6 +1,6 @@
-﻿using Template.Application.Responses.Statuses;
+﻿using Template.Application.Mediator.Responses.Statuses;
 
-namespace Template.Application.Responses;
+namespace Template.Application.Mediator.Responses;
 
 public interface IApplicationResponse
 {

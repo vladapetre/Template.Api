@@ -1,8 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Template.Application.Mediator.Messaging;
 using Template.Outbox;
 using Template.Outbox.Contexts.Outbox;
+using Template.Outbox.Messaging;
 using Template.Persistence.Contexts.Interceptors;
 
 namespace Template.Persistence;
@@ -19,6 +21,8 @@ public static class AssemblyRegistration
             options.UseSqlServer("name=ConnectionStrings:OutboxContext");
             options.AddInterceptors(svcCollection.GetRequiredService<OutboxMessageTimeStampsInterceptor>());
         });
+
+        services.AddScoped<INotificationBus, NotificationBus>();
 
         return services;
     }

@@ -1,11 +1,12 @@
 ﻿using MediatR;
-using Template.Application.Responses;
+using Template.Application.Mediator.Requests;
+using Template.Application.Mediator.Responses;
 using Template.Domain.Exceptions;
 using Template.Domain.Models.Example.Repositories;
 
 namespace Template.Application.Example.Queries;
 
-internal sealed class GetExamplesQueryHandler : IRequestHandler<GetExamplesQuery, ApplicationResponse<GetExamplesQueryResponse>>
+internal sealed class GetExamplesQueryHandler : IApplicationRequestHandler<GetExamplesQuery, ApplicationResponse<GetExamplesQueryResponse>>
 {
     private readonly IExampleRepository _exampleRepository;
 

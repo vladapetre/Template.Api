@@ -6,8 +6,8 @@ namespace Template.Domain.Models.Example;
 public class ExampleStatus : IEnumeration
 {
 
-    public static readonly ExampleStatus Draft = new(1, nameof(Draft).ToLowerInvariant());
-    public static readonly ExampleStatus Completed = new(2, nameof(Completed).ToLowerInvariant());
+    public static readonly ExampleStatus Draft = new(1, nameof(Draft).ToUpperInvariant());
+    public static readonly ExampleStatus Completed = new(2, nameof(Completed).ToUpperInvariant());
 
     public ExampleStatus(int id, string name) : base(id, name)
     {

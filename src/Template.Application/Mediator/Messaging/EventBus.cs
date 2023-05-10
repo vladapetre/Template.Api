@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Template.Domain.Primitives;
 
-namespace Template.Application.Events;
+namespace Template.Application.Mediator.Messaging;
 internal sealed class EventBus : IEventBus
 {
     private readonly IMediator _mediator;
@@ -10,8 +10,8 @@ internal sealed class EventBus : IEventBus
     {
         _mediator = mediator;
     }
-    public async Task DispatchAsync<TEvent>(TEvent @event) where TEvent : IEvent
+    public async Task PublishAsync<TEvent>(TEvent @event) where TEvent : IEvent
     {
-        await _mediator.Publish(new Notification<TEvent>(@event));
+        await _mediator.Publish(Notification<TEvent>.Create(@event));
     }
 }

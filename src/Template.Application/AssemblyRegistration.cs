@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
-using Template.Application.Behaviors;
-using Template.Application.Events;
+using Template.Application.Mediator.Behaviors;
+using Template.Application.Mediator.Messaging;
 using Template.Domain.Primitives;
 
 namespace Template.Application;
@@ -15,6 +15,7 @@ public static class AssemblyRegistration
         services.AddMediatR((configuration) =>
         {
             configuration.RegisterServicesFromAssembly(assembly);
+
 
             configuration.AddOpenBehavior(typeof(LoggingBehavior<,>));
             configuration.AddOpenBehavior(typeof(ExceptionHandlingBehavior<,>));

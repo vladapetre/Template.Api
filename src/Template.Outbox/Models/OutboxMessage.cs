@@ -1,4 +1,5 @@
 ﻿using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Template.Outbox.Models;
 
@@ -12,6 +13,11 @@ internal class OutboxMessage
     public DateTimeOffset ModifiedOn { get; set; }
 
     public virtual OutboxMessageStatus Status { get; init; }
+
+    public OutboxMessage()
+    {
+            
+    }
 
     public OutboxMessage(object message)
     {

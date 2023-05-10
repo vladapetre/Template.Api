@@ -44,7 +44,7 @@ internal sealed class RaiseEntityEventsSaveChangesInterceptor : SaveChangesInter
 
         foreach (var @event in events)
         {
-            await _eventBus.DispatchAsync(@event);
+            await _eventBus.PublishAsync(@event);
         }
 
         return await base.SavingChangesAsync(eventData, result, cancellationToken);
