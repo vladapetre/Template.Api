@@ -4,6 +4,8 @@ using Template.Domain.Models.Example.Repositories;
 using Template.Domain.Models.Example.Views;
 using Template.Domain.Primitives;
 using Template.Persistence.Contexts.Template;
+using Template.Persistence.Example.Specifications;
+using Template.Persistence.Specifications;
 
 namespace Template.Persistence.Example.Repositories;
 
@@ -30,12 +32,17 @@ internal class ExampleRepository : IExampleRepository
 
     public async Task<IList<ExampleAggregateRoot>> GetAllAsync()
     {
-        return await _context.Example.ToListAsync();
+        return await _context.Example
+            .WithSpecification(new GetExamplesSpecification())
+            .AsNoTracking()
+            .ToListAsync();
     }
 
     public async Task<IList<ExampleView>> ProjectAllToSimpleViewsAsync()
     {
-        return await _context.Example.AsNoTracking()
+        return await _context.Example
+            .WithSpecification(new GetExamplesSpecification())
+            .AsNoTracking()
             .Select(example => new ExampleView(example.Status.Name, example.Description.Name, example.Description.Version))
             .ToListAsync();
     }
