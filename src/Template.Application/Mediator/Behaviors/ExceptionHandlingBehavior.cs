@@ -1,7 +1,10 @@
-﻿using MediatR;
+﻿using System;
+using MediatR;
 using Microsoft.Extensions.Logging;
 using Template.Application.Extensions;
 using Template.Application.Mediator.Responses;
+using Template.Application.Mediator.Responses.Statuses;
+using Template.Domain.Exceptions;
 
 namespace Template.Application.Mediator.Behaviors;
 
@@ -23,13 +26,21 @@ public class ExceptionHandlingBehavior<TRequest, TResponse> : IPipelineBehavior<
         {
             return await next();
         }
-        catch (Exception exception)
+        catch (DomainException domainException)
         {
-            _logger.LogError("Unhandled errors - {RequestType} - Request: {@Request} - Errors: {@Exception}", typeName, request, exception);
+            _logger.LogError("Unhandled errors - {RequestType} - Request: {@Request} - Errors: {@Exception}", typeName, request, domainException);
 
             return new TResponse
             {
-                Status = new(500, exception.Message)
+                Status = new(ApplicationStatus.BadRequest.Code, domainException.Message)
+            };
+        }
+        catch (Exception generalException)
+        {
+            _logger.LogError("Unhandled errors - {RequestType} - Request: {@Request} - Errors: {@Exception}", typeName, request, generalException);
+            return new TResponse
+            {
+                Status = new(ApplicationStatus.InternalServerError.Code, generalException.Message)
             };
         }
     }

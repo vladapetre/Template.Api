@@ -18,14 +18,18 @@ internal class ExampleRepository : IExampleRepository
 
     public IUnitOfWork UnitOfWork => _context;
 
-    public async Task<IList<ExampleAggregateRoot>> GetAllAsync()
+    public async Task<ExampleAggregateRoot> CreateExample(string exampleName)
     {
-
-        var example = ExampleAggregateRoot.CreateTemplate("Test", $"{DateTime.UtcNow.Millisecond % 100}");
+        var example = ExampleAggregateRoot.CreateTemplate(exampleName, $"{DateTime.UtcNow.Millisecond % 100}");
 
         await _context.Example.AddAsync(example);
         await _context.SaveChangesAsync();
 
+        return example;
+    }
+
+    public async Task<IList<ExampleAggregateRoot>> GetAllAsync()
+    {
         return await _context.Example.ToListAsync();
     }
 

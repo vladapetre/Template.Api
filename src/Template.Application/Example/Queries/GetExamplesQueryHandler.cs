@@ -17,18 +17,7 @@ internal sealed class GetExamplesQueryHandler : IApplicationRequestHandler<GetEx
 
     public async Task<ApplicationResponse<GetExamplesQueryResponse>> Handle(GetExamplesQuery request, CancellationToken cancellationToken)
     {
-        try
-        {
             var examples = await _exampleRepository.GetAllAsync();
             return new GetExamplesQueryResponse(examples);
-        }
-        catch (DomainException domainException)
-        {
-            return ApplicationResponse.BadRequest(domainException.Message);
-        }
-        catch (Exception generalException)
-        {
-            return ApplicationResponse.InternalServerError(generalException.Message);
-        }
     }
 }
