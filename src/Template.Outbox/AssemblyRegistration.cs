@@ -29,6 +29,8 @@ public static class AssemblyRegistration
 
         services.AddMassTransit(mass =>
         {
+            mass.SetKebabCaseEndpointNameFormatter();
+
             mass.AddEntityFrameworkOutbox<OutboxContext>(cfg =>
             {
                 cfg.UseSqlServer();

@@ -2,8 +2,8 @@ services:
   host:
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-      ConnectionStrings__TemplateContext: Server=database,1433;User Id=sa;Password=administrat0r!;Trusted_Connection=False;TrustServerCertificate=true;
-      ConnectionStrings__OutboxContext: Server=database,1433;User Id=sa;Password=administrat0r!;Trusted_Connection=False;TrustServerCertificate=true;
+      ConnectionStrings__TemplateContext: Server=database,1433;Database=template;User Id=sa;Password=administrat0r!;Trusted_Connection=False;TrustServerCertificate=true;
+      ConnectionStrings__OutboxContext: Server=database,1433;Database=template;User Id=sa;Password=administrat0r!;Trusted_Connection=False;TrustServerCertificate=true;
       OutboxSettings__Uri: message-bus
     image: host
     container_name: host
