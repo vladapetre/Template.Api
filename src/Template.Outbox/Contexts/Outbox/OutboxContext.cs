@@ -1,6 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Template.Outbox.Models;
-using Template.Outbox.Models.Configurations;
+﻿using MassTransit;
+using Microsoft.EntityFrameworkCore;
 
 namespace Template.Outbox.Contexts.Outbox;
 internal class OutboxContext : DbContext
@@ -11,11 +10,12 @@ internal class OutboxContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.HasDefaultSchema(SCHEMA);
-        modelBuilder.ApplyConfiguration(new OutboxMessageConfiguration());
+
+        modelBuilder.AddInboxStateEntity();
+        modelBuilder.AddOutboxMessageEntity();
+        modelBuilder.AddOutboxStateEntity();
 
         base.OnModelCreating(modelBuilder);
     }
-
-    public DbSet<OutboxMessage> OutboxMessage { get; set; }
 }
 

@@ -10,7 +10,7 @@ using Template.Domain.Exceptions;
 using Template.Domain.Models.Example.Repositories;
 
 namespace Template.Application.Example.Commands;
-internal class CreateExampleCommandHandler : IApplicationRequestHandler<CreateExampleCommand, ApplicationResponse<CreateExampleCommandResponse>>
+public class CreateExampleCommandHandler : IApplicationRequestHandler<CreateExampleCommand, ApplicationResponse<CreateExampleCommandResponse>>
 {
     private readonly IExampleRepository _exampleRepository;
 

@@ -5,6 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Template.Application.Example.Commands;
-internal class CreateExampleCommandValidator
+public class CreateExampleCommandValidator
 {
 }

@@ -19,7 +19,7 @@ builder.Services
     .AddPersistenceServices()
     .AddInfrastructureServices()
     .AddPresentationServices()
-    .AddOutboxServices();
+    .AddOutboxServices(builder.Configuration);
 
 var app = builder.Build();
 
