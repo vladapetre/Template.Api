@@ -1,0 +1,57 @@
+services:
+  host:
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__TemplateContext: Server=database,1433;Database=template;User Id=sa;Password=administrat0r!;Trusted_Connection=False;TrustServerCertificate=true;
+      ConnectionStrings__OutboxContext: Server=database,1433;Database=template;User Id=sa;Password=administrat0r!;Trusted_Connection=False;TrustServerCertificate=true;
+      OutboxSettings__Uri: message-bus
+    image: host
+    container_name: host
+    build:
+      context: .
+      dockerfile: .devops/docker/dockerfile
+      args: []
+      labels: []
+    ports:
+      - 3080:80
+      - 3443:443
+  database:
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: administrat0r!
+      SA_PASSWORD: administrat0r!
+    #image: mcr.microsoft.com/azure-sql-edge:1.0.4
+    container_name: database
+    # If you really want to use MS SQL Server, uncomment the following line
+    image: mcr.microsoft.com/mssql/server
+    ports:
+      - 1433:1433
+    restart: always
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P example_123 -Q 'SELECT 1' || exit 1"
+        ]
+      interval: 10s
+      retries: 10
+      start_period: 10s
+      timeout: 3s
+  cache:
+    image: redislabs/redismod
+    container_name: cache
+    ports:
+      - '6379:6379'
+    restart: always
+  message-bus:
+    environment:
+      RABBITMQ_DEFAULT_USER: "username"
+      RABBITMQ_DEFAULT_PASS: "password"
+    image: rabbitmq:3-management-alpine
+    container_name: 'message-bus'
+    ports:
+      - 5672:5672
+      - 15672:15672
+    volumes:
+      - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+      - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
