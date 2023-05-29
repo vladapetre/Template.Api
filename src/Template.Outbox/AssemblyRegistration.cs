@@ -4,11 +4,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Template.Application.Mediator.Messaging;
-using Template.Outbox;
 using Template.Outbox.Contexts.Outbox;
 using Template.Outbox.Messaging;
 using Template.Outbox.Settings;
-using Template.Persistence.Contexts.Interceptors;
 
 namespace Template.Persistence;
 
@@ -29,8 +27,6 @@ public static class AssemblyRegistration
 
         services.AddMassTransit(mass =>
         {
-            mass.SetKebabCaseEndpointNameFormatter();
-
             mass.AddEntityFrameworkOutbox<OutboxContext>(cfg =>
             {
                 cfg.UseSqlServer();

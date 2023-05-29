@@ -1,4 +1,6 @@
-﻿namespace Template.Domain.Primitives;
+﻿using System.Text.Json.Serialization;
+
+namespace Template.Domain.Primitives;
 
 public abstract class IEntity
 {
@@ -17,6 +19,8 @@ public abstract class IEntity
     }
 
     private List<IEvent> _events = new();
+
+    [JsonIgnore]
     public IReadOnlyCollection<IEvent> Events => _events.AsReadOnly();
 
     internal void AddEvent(IEvent @event)
