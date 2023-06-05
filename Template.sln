@@ -29,7 +29,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Template.Persistence.Tests"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Template.Presentation.Tests", "tests\Template.Presentation.Tests\Template.Presentation.Tests.csproj", "{F2823E7E-2A86-4B07-83D9-4668FF3DEDB2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template.Outbox", "src\Template.Outbox\Template.Outbox.csproj", "{31FA8CC3-A73B-4A03-8233-D8445422A3DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Template.Outbox", "src\Template.Outbox\Template.Outbox.csproj", "{31FA8CC3-A73B-4A03-8233-D8445422A3DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,11 +1,12 @@
-﻿
+
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Template.Presentation;
 
 public static class AssemblyRegistration
 {
-    public static IServiceCollection AddPresentationServices(this IServiceCollection services)
+    public static IServiceCollection AddPresentationServices(this IServiceCollection services, IConfiguration configuration)
     {
         var assembly = typeof(AssemblyRegistration).Assembly;
 

@@ -14,18 +14,18 @@ builder.Host.UseSerilog((context, services, configuration) => configuration.Read
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services
-    .AddApplicationServices()
-    .AddPersistenceServices()
-    .AddInfrastructureServices()
-    .AddPresentationServices()
-    .AddOutboxServices(builder.Configuration);
+
+builder.Services.AddApplicationServices(builder.Configuration);
+builder.Services.AddPersistenceServices(builder.Configuration);
+builder.Services.AddInfrastructureServices(builder.Configuration);
+builder.Services.AddPresentationServices(builder.Configuration);
+builder.Services.AddOutboxServices(builder.Configuration);
+
 
 var app = builder.Build();
 
-app
-    .UsePersistenceServices()
-    .UseOutboxServices();
+app.UsePersistenceServices();
+app.UseOutboxServices();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

@@ -1,4 +1,6 @@
-﻿using FluentValidation;
+﻿using System.Runtime.CompilerServices;
+using FluentValidation;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Template.Application.Mediator.Behaviors;
 using Template.Application.Mediator.Messaging;
@@ -8,18 +10,17 @@ namespace Template.Application;
 
 public static class AssemblyRegistration
 {
-    public static IServiceCollection AddApplicationServices(this IServiceCollection services)
+    public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration configuration)
     {
         var assembly = typeof(AssemblyRegistration).Assembly;
 
-        services.AddMediatR((configuration) =>
+        services.AddMediatR((cfg) =>
         {
-            configuration.RegisterServicesFromAssembly(assembly);
+            cfg.RegisterServicesFromAssembly(assembly);
 
-
-            configuration.AddOpenBehavior(typeof(LoggingBehavior<,>));
-            configuration.AddOpenBehavior(typeof(ExceptionHandlingBehavior<,>));
-            configuration.AddOpenBehavior(typeof(ValidatorBehavior<,>));
+            cfg.AddOpenBehavior(typeof(LoggingBehavior<,>));
+            cfg.AddOpenBehavior(typeof(ExceptionHandlingBehavior<,>));
+            cfg.AddOpenBehavior(typeof(ValidatorBehavior<,>));
         });
 
         services.AddTransient<IEventBus, EventBus>();

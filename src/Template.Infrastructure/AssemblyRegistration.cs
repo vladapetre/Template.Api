@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Template.Domain.Models.Example;
 using Template.Infrastructure.Example.Mappers;
 using Template.Infrastructure.Http.Client;
@@ -9,7 +10,7 @@ namespace Template.Infrastructure;
 
 public static class AssemblyRegistration
 {
-    public static IServiceCollection AddInfrastructureServices(this IServiceCollection services)
+    public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
     {
 
         services.AddTransient<IMapper<ExampleAggregateRoot, object>, ExampleToObjectMapper>();

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Template.Domain.Models.Example.Repositories;
@@ -10,7 +11,7 @@ namespace Template.Persistence;
 
 public static class AssemblyRegistration
 {
-    public static IServiceCollection AddPersistenceServices(this IServiceCollection services)
+    public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddScoped<RaiseEntityEventsSaveChangesInterceptor>();
         services.AddDbContext<TemplateContext>((svcCollection, options) =>
