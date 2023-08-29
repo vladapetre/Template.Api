@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Template.Application.Mediator.Messaging.Notifications;
+using Template.Application.Mediator.Messages.Notifications.Publishers;
 using Template.Outbox.Contexts.Outbox;
 using Template.Outbox.Messaging;
 using Template.Outbox.Settings;
@@ -14,7 +14,7 @@ public static class AssemblyRegistration
 {
     public static IServiceCollection AddOutboxServices(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddScoped<INotificationBus, NotificationBus>();
+        services.AddScoped<IApplicationNotificationPublisher, OutboxNotificationPublisher>();
 
         services.AddDbContext<OutboxContext>((svcCollection, options) =>
         {

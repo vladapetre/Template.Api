@@ -21,7 +21,7 @@
 
   <ItemGroup>
     <Folder Include="Example\Notifications\" />
-    <Folder Include="Mediator\Events\" />
+    <Folder Include="Mediator\Responses\" />
   </ItemGroup>
 
 </Project>

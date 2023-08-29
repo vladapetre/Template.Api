@@ -4,9 +4,9 @@ using Template.Domain.Primitives;
 namespace Template.Persistence.Contexts.Interceptors;
 internal sealed class RaiseEntityEventsSaveChangesInterceptor : SaveChangesInterceptor
 {
-    private readonly IEventBus _eventBus;
+    private readonly IEventPublisher _eventBus;
 
-    public RaiseEntityEventsSaveChangesInterceptor(IEventBus eventBus)
+    public RaiseEntityEventsSaveChangesInterceptor(IEventPublisher eventBus)
     {
         _eventBus = eventBus;
     }

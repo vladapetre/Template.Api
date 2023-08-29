@@ -1,5 +1,5 @@
 ﻿using Template.Application.Mediator.Requests;
-using Template.Application.Mediator.Responses;
+using Template.Application.Mediator.Results;
 
 namespace Template.Application.Example.Queries;
 

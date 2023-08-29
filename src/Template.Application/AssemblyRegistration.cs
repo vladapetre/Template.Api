@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using Template.Application.Mediator.Behaviors;
-using Template.Application.Mediator.Messaging.Events;
+using Template.Application.Mediator.Messages.Events.Publishers;
 using Template.Domain.Primitives;
 
 namespace Template.Application;
@@ -19,10 +19,10 @@ public static class AssemblyRegistration
 
             configuration.AddOpenBehavior(typeof(LoggingBehavior<,>));
             configuration.AddOpenBehavior(typeof(ExceptionHandlingBehavior<,>));
-            configuration.AddOpenBehavior(typeof(ValidatorBehavior<,>));
+            configuration.AddOpenBehavior(typeof(ValidationBehavior<,>));
         });
 
-        services.AddTransient<IEventBus, EventBus>();
+        services.AddTransient<IEventPublisher, ApplicationEventPublisher>();
 
         services.AddValidatorsFromAssembly(assembly);
 

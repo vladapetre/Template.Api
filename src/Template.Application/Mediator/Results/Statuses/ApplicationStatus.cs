@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace Template.Application.Mediator.Responses.Statuses;
+namespace Template.Application.Mediator.Results.Statuses;
 public sealed record ApplicationStatus
 {
     public int Code { get; }
@@ -20,5 +20,5 @@ public sealed record ApplicationStatus
     public static ApplicationStatus Forbidden = new((int)HttpStatusCode.Forbidden, "Forbidden");
 
     public static ApplicationStatus Custom(int code, string message) => new(code, message);
-    public bool Successful => this.Code == Ok.Code;
+    public bool Successful => Code == Ok.Code;
 };

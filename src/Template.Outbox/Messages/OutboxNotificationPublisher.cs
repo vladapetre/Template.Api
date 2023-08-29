@@ -1,27 +1,26 @@
 ﻿using MassTransit;
-using MassTransit.EntityFrameworkCoreIntegration;
 using MassTransit.Transports;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
-using Template.Application.Mediator.Messaging.Notifications;
+using Template.Application.Mediator.Messages.Notifications;
+using Template.Application.Mediator.Messages.Notifications.Publishers;
 using Template.Domain.Primitives;
 using Template.Outbox.Contexts.Outbox;
 
 namespace Template.Outbox.Messaging;
 
-internal sealed class NotificationBus : INotificationBus
+internal sealed class OutboxNotificationPublisher : IApplicationNotificationPublisher
 {
     private readonly OutboxContext _outboxContext;
     private readonly IPublishEndpoint _publishEndpoint;
 
-    public NotificationBus(OutboxContext outboxContext, IPublishEndpoint publishEndpoint)
+    public OutboxNotificationPublisher(OutboxContext outboxContext, IPublishEndpoint publishEndpoint)
     {
         _outboxContext = outboxContext;
         _publishEndpoint = publishEndpoint;
     }
 
-    public async Task PublishAsync<TEvent>(Notification<TEvent> notification) where TEvent : IEvent
+    public async Task PublishAsync<TEvent>(ApplicationNotification<TEvent> notification) where TEvent : IEvent
     {
         try
         {

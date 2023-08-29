@@ -1,5 +1,5 @@
 ﻿namespace Template.Domain.Primitives;
-public interface IEventBus
+public interface IEventPublisher
 {
     Task PublishAsync<TEvent>(TEvent @event) where TEvent : IEvent;
 }

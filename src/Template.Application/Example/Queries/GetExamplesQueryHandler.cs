@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using Template.Application.Mediator.Requests;
-using Template.Application.Mediator.Responses;
+using Template.Application.Mediator.Results;
 using Template.Domain.Exceptions;
 using Template.Domain.Models.Example.Repositories;
 

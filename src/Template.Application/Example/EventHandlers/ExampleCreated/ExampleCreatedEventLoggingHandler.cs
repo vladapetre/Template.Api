@@ -1,10 +1,11 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
-using Template.Application.Mediator.Messaging.Notifications;
+using Template.Application.Mediator.Messages;
+using Template.Application.Mediator.Messages.Events;
 using Template.Domain.Models.Example.Events;
 
 namespace Template.Application.Example.EventHandlers.ExampleCreated;
-internal class ExampleCreatedEventLoggingHandler : INotificationHandler<Notification<ExampleCreatedEvent>>
+internal class ExampleCreatedEventLoggingHandler : IApplicationEventHandler<ExampleCreatedEvent>
 {
     private readonly ILogger<ExampleCreatedEventLoggingHandler> _logger;
 
@@ -13,8 +14,8 @@ internal class ExampleCreatedEventLoggingHandler : INotificationHandler<Notifica
         _logger = logger;
     }
 
-    public async Task Handle(Notification<ExampleCreatedEvent> notification, CancellationToken cancellationToken)
+    public async Task Handle(IApplicationEvent<ExampleCreatedEvent> @event, CancellationToken cancellationToken)
     {
-        _logger.LogInformation("Example created {@example}", notification.Payload);
+        _logger.LogInformation("Example created {@example}", @event.Payload);
     }
 }

@@ -2,17 +2,17 @@
 using MediatR;
 using Microsoft.Extensions.Logging;
 using Template.Application.Extensions;
-using Template.Application.Mediator.Responses;
-using Template.Application.Mediator.Responses.Statuses;
+using Template.Application.Mediator.Results;
+using Template.Application.Mediator.Results.Statuses;
 
 namespace Template.Application.Mediator.Behaviors;
-public class ValidatorBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
+public class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
     where TResponse : IApplicationResult, new()
 {
-    private readonly ILogger<ValidatorBehavior<TRequest, TResponse>> _logger;
+    private readonly ILogger<ValidationBehavior<TRequest, TResponse>> _logger;
     private readonly IEnumerable<IValidator<TRequest>> _validators;
 
-    public ValidatorBehavior(IEnumerable<IValidator<TRequest>> validators, ILogger<ValidatorBehavior<TRequest, TResponse>> logger)
+    public ValidationBehavior(IEnumerable<IValidator<TRequest>> validators, ILogger<ValidationBehavior<TRequest, TResponse>> logger)
     {
         _validators = validators;
         _logger = logger;
