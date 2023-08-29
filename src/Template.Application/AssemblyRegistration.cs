@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using Template.Application.Mediator.Behaviors;
-using Template.Application.Mediator.Messaging;
+using Template.Application.Mediator.Messaging.Events;
 using Template.Domain.Primitives;
 
 namespace Template.Application;

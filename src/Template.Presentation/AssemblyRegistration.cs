@@ -1,5 +1,7 @@
 ﻿
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using Template.Host.Middleware;
 
 namespace Template.Presentation;
 
@@ -14,5 +16,12 @@ public static class AssemblyRegistration
             .AddApplicationPart(assembly);
 
         return services;
+    }
+
+    public static IApplicationBuilder UsePresentationServices(this IApplicationBuilder builder)
+    {
+        builder.UseMiddleware<CorrelationMiddleware>();
+
+        return builder;
     }
 }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Template.Application.Mediator.Messaging;
+using Template.Application.Mediator.Messaging.Notifications;
 using Template.Outbox.Contexts.Outbox;
 using Template.Outbox.Messaging;
 using Template.Outbox.Settings;

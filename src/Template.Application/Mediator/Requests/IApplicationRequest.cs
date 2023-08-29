@@ -5,3 +5,4 @@ namespace Template.Application.Mediator.Requests;
 public interface IApplicationRequest<out TResponse> : IRequest<TResponse> where TResponse : IApplicationResult
 {
 }
+

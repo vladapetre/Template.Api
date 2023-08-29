@@ -4,7 +4,7 @@ using MassTransit.Transports;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using Template.Application.Mediator.Messaging;
+using Template.Application.Mediator.Messaging.Notifications;
 using Template.Domain.Primitives;
 using Template.Outbox.Contexts.Outbox;
 

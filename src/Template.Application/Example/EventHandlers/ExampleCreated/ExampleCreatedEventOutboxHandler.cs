@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
-using Template.Application.Mediator.Messaging;
+using Template.Application.Mediator.Messaging.Notifications;
 using Template.Domain.Models.Example.Events;
 
 namespace Template.Application.Example.EventHandlers.ExampleCreated;
