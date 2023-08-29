@@ -3,10 +3,11 @@ using MediatR;
 using Microsoft.Extensions.Logging;
 using Template.Application.Extensions;
 using Template.Application.Mediator.Responses;
+using Template.Application.Mediator.Responses.Statuses;
 
 namespace Template.Application.Mediator.Behaviors;
 public class ValidatorBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
-    where TResponse : IApplicationResponse, new()
+    where TResponse : IApplicationResult, new()
 {
     private readonly ILogger<ValidatorBehavior<TRequest, TResponse>> _logger;
     private readonly IEnumerable<IValidator<TRequest>> _validators;
@@ -35,7 +36,7 @@ public class ValidatorBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest
 
             return new TResponse
             {
-                Status = new(500, string.Join(",", failures.Select(failure => failure.ToString())))
+                Status = ApplicationStatus.Custom(500, string.Join(",", failures.Select(failure => failure.ToString())))
             };
         }
 

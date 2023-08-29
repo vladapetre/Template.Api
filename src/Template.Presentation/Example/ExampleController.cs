@@ -29,10 +29,10 @@ public class ExampleController : ControllerBase
 
         if (getExamplesQueryResponse.Status.Successful)
         {
-            return StatusCode(getExamplesQueryResponse.Status.Code, getExamplesQueryResponse.Message);
+            return StatusCode(getExamplesQueryResponse.Status.Code, getExamplesQueryResponse.Error);
         }
 
-        return Ok(getExamplesQueryResponse.Result);
+        return Ok(getExamplesQueryResponse.Value);
     }
 
     [HttpPost]
@@ -44,9 +44,9 @@ public class ExampleController : ControllerBase
 
         if (createExampleCommandResponse.Status.Successful)
         {
-            return StatusCode(createExampleCommandResponse.Status.Code, createExampleCommandResponse.Message);
+            return StatusCode(createExampleCommandResponse.Status.Code, createExampleCommandResponse.Error);
         }
 
-        return Ok(createExampleCommandResponse.Result);
+        return Ok(createExampleCommandResponse.Value);
     }
 }

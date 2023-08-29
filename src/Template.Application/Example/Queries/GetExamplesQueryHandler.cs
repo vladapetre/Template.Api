@@ -6,7 +6,7 @@ using Template.Domain.Models.Example.Repositories;
 
 namespace Template.Application.Example.Queries;
 
-internal sealed class GetExamplesQueryHandler : IApplicationRequestHandler<GetExamplesQuery, ApplicationResponse<GetExamplesQueryResponse>>
+internal sealed class GetExamplesQueryHandler : IApplicationRequestHandler<GetExamplesQuery, ApplicationResult<GetExamplesQueryResponse, string>>
 {
     private readonly IExampleRepository _exampleRepository;
 
@@ -15,7 +15,7 @@ internal sealed class GetExamplesQueryHandler : IApplicationRequestHandler<GetEx
         _exampleRepository = exampleRepository;
     }
 
-    public async Task<ApplicationResponse<GetExamplesQueryResponse>> Handle(GetExamplesQuery request, CancellationToken cancellationToken)
+    public async Task<ApplicationResult<GetExamplesQueryResponse, string>> Handle(GetExamplesQuery request, CancellationToken cancellationToken)
     {
             var examples = await _exampleRepository.GetAllAsync();
             return new GetExamplesQueryResponse(examples);

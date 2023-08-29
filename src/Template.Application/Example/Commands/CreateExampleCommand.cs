@@ -7,7 +7,7 @@ using Template.Application.Mediator.Requests;
 using Template.Application.Mediator.Responses;
 
 namespace Template.Application.Example.Commands;
-public class CreateExampleCommand :  IApplicationRequest<ApplicationResponse<CreateExampleCommandResponse>>
+public class CreateExampleCommand :  IApplicationRequest<ApplicationResult<CreateExampleCommandResponse, string>>
 {
     public string Name { get; init; } = default!;
 }

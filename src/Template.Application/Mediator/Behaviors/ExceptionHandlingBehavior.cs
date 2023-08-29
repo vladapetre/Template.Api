@@ -9,7 +9,7 @@ using Template.Domain.Exceptions;
 namespace Template.Application.Mediator.Behaviors;
 
 public class ExceptionHandlingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
-    where TResponse : IApplicationResponse, new()
+    where TResponse : IApplicationResult, new()
 {
     private readonly ILogger<ValidatorBehavior<TRequest, TResponse>> _logger;
 
@@ -32,7 +32,7 @@ public class ExceptionHandlingBehavior<TRequest, TResponse> : IPipelineBehavior<
 
             return new TResponse
             {
-                Status = new(ApplicationStatus.BadRequest.Code, domainException.Message)
+                Status = ApplicationStatus.Custom(ApplicationStatus.BadRequest.Code, domainException.Message)
             };
         }
         catch (Exception generalException)
@@ -40,7 +40,7 @@ public class ExceptionHandlingBehavior<TRequest, TResponse> : IPipelineBehavior<
             _logger.LogError("Unhandled errors - {RequestType} - Request: {@Request} - Errors: {@Exception}", typeName, request, generalException);
             return new TResponse
             {
-                Status = new(ApplicationStatus.InternalServerError.Code, generalException.Message)
+                Status = ApplicationStatus.Custom(ApplicationStatus.InternalServerError.Code, generalException.Message)
             };
         }
     }

@@ -7,10 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Example\GetExample\**" />
+    <EmbeddedResource Remove="Example\GetExample\**" />
+    <None Remove="Example\GetExample\**" />
+  </ItemGroup>
+
+  <ItemGroup>
 	<FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 	
   <ItemGroup>
+    <PackageReference Include="FastEndpoints" Version="5.15.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
   </ItemGroup>
 

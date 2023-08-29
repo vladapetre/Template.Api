@@ -2,8 +2,7 @@
 
 namespace Template.Application.Mediator.Responses;
 
-public interface IApplicationResponse
+public interface IApplicationResult
 {
     public ApplicationStatus Status { get; init; }
-    public string? Message { get; init; }
 }

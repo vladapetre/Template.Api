@@ -10,7 +10,7 @@ using Template.Domain.Exceptions;
 using Template.Domain.Models.Example.Repositories;
 
 namespace Template.Application.Example.Commands;
-public class CreateExampleCommandHandler : IApplicationRequestHandler<CreateExampleCommand, ApplicationResponse<CreateExampleCommandResponse>>
+public class CreateExampleCommandHandler : IApplicationRequestHandler<CreateExampleCommand, ApplicationResult<CreateExampleCommandResponse, string>>
 {
     private readonly IExampleRepository _exampleRepository;
 
@@ -18,7 +18,7 @@ public class CreateExampleCommandHandler : IApplicationRequestHandler<CreateExam
     {
         _exampleRepository = exampleRepository;
     }
-    public async Task<ApplicationResponse<CreateExampleCommandResponse>> Handle(CreateExampleCommand request, CancellationToken cancellationToken)
+    public async Task<ApplicationResult<CreateExampleCommandResponse, string>> Handle(CreateExampleCommand request, CancellationToken cancellationToken)
     {
   
             var example = await _exampleRepository.CreateExample(request.Name);
