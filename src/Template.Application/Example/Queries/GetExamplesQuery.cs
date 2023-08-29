@@ -3,6 +3,6 @@ using Template.Application.Mediator.Responses;
 
 namespace Template.Application.Example.Queries;
 
-public sealed class GetExamplesQuery : IApplicationRequest<ApplicationResult<GetExamplesQueryResponse, string>>
+public sealed class GetExamplesQuery : IApplicationRequest<ApplicationResult<GetExamplesQueryResult, string>>
 {
 }

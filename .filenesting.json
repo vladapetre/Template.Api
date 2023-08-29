@@ -1,7 +1,6 @@
 {
 	"help": "https://go.microsoft.com/fwlink/?linkid=866610",
 	"root": false,
-
 	"dependentFileProviders": {
 		"add": {
 			"fileSuffixToExtension": {
@@ -12,7 +11,7 @@
 					"Validator.cs": [
 						".cs"
 					],
-					"Response.cs": [
+					"Result.cs": [
 						".cs"
 					],
 					"Payload.cs": [

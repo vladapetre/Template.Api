@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using Template.Domain.Models.Example;
 
 namespace Template.Application.Example.Commands;
-public class CreateExampleCommandResponse
+public class CreateExampleCommandResult
 {
-    public CreateExampleCommandResponse(ExampleAggregateRoot example)
+    public CreateExampleCommandResult(ExampleAggregateRoot example)
     {
         Example = example;
     }

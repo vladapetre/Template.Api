@@ -2,11 +2,11 @@
 
 namespace Template.Application.Example.Queries;
 
-public sealed class GetExamplesQueryResponse
+public sealed class GetExamplesQueryResult
 {
     private readonly IList<ExampleAggregateRoot> _examples;
 
-    public GetExamplesQueryResponse(IList<ExampleAggregateRoot> examples)
+    public GetExamplesQueryResult(IList<ExampleAggregateRoot> examples)
     {
         _examples = examples;
     }
