@@ -1,1 +1,0 @@
-﻿dotnet ef migrations add InitialCreate --startup-project ../Template.Host/Template.Host.csproj  --context TemplateContext --output-dir Template/Migrations
