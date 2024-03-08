@@ -1,4 +1,4 @@
-﻿namespace Template.Module.Presentation.Controllers.Weather.GetWeather;
+﻿namespace Template.Presentation.Controllers.Weather.GetWeather;
 
 public sealed record GetWeatherResponse(DateOnly Date, int TemperatureC, string? Summary)
 {

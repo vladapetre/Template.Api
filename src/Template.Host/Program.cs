@@ -1,6 +1,7 @@
 
 using Serilog;
-using Template.Module.Presentation;
+using Template.Presentation;
+using Template.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +12,9 @@ builder.Host.UseSerilog((context, services, configuration) => configuration.Read
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddPresentationAssembly();
+builder.Services
+    .AddPresentationAssembly()
+    .AddApplicationAssembly();
 
 var app = builder.Build();
 
