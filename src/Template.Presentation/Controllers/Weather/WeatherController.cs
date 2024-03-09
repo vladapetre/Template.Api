@@ -5,7 +5,7 @@ using Template.Presentation.Controllers.Weather.GetWeather;
 namespace Template.Presentation.Controllers.Weather;
 
 [ApiController]
-[Route("api/{controller}")]
+[Route("api/[controller]")]
 public sealed class WeatherController : ControllerBase
 {
     private readonly IRequestHandler<GetWeatherQuery, Result<GetWeatherQueryResult, Exception>> _getWeatherQueryHandler;

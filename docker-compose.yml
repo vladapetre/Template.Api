@@ -13,8 +13,16 @@ services:
       args: []
       labels: []
     ports:
-      - 3080:80
+      - 3080:8080
       - 3443:443
+  logging:
+    environment:
+      - ACCEPT_EULA=Y
+    image: datalust/seq:latest
+    container_name: logging
+    ports:
+      - 5341:5341
+      - 8081:80
   database:
     environment:
       ACCEPT_EULA: "Y"
