@@ -1,6 +1,5 @@
 ﻿namespace Template.Presentation.Controllers.Weather.GetWeather;
 
-public sealed record GetWeatherResponse(DateOnly Date, int TemperatureC, string? Summary)
+public sealed record GetWeatherResponse(DateOnly Date, decimal TemperatureC, decimal TemperatureF, string? Summary)
 {
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
 }

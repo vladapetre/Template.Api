@@ -1,7 +1,8 @@
-﻿namespace Template.Application.Components.Weather.GetWeather;
+﻿using Template.Domain.Components.Weather;
+
+namespace Template.Application.Components.Weather.Queries;
 public sealed class GetWeatherQueryResult
 {
-    public List<Weather> Weather { get; init; } = new List<Weather>();
+    public List<WeatherAggregate> Weather { get; init; } = new List<WeatherAggregate>();
 }
 
-public sealed record Weather(DateOnly Date, int TemperatureC, string? Summary);

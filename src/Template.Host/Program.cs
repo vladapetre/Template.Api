@@ -2,6 +2,8 @@
 using Serilog;
 using Template.Presentation;
 using Template.Application;
+using Template.Domain;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +16,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services
     .AddPresentationAssembly()
-    .AddApplicationAssembly();
+    .AddApplicationAssembly()
+    .AddDomainAssembly();
 
 var app = builder.Build();
 

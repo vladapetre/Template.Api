@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Template.Domain\Template.Domain.csproj" />
     <ProjectReference Include="..\Template.Presentation\Template.Presentation.csproj" />
   </ItemGroup>
 

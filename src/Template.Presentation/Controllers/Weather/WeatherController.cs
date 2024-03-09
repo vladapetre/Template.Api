@@ -18,10 +18,10 @@ public sealed class WeatherController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IList<GetWeatherResponse>>> Get([FromRoute] GetWeatherRequest request)
     {
-        var result = await _getWeatherQueryHandler.HandleAsync(new GetWeatherQuery());
+        var result = await _getWeatherQueryHandler.HandleAsync(new GetWeatherQuery() { Date = request.Date});
 
         return result.Match<ActionResult>(
-                success: (value) => Ok(value.Weather.Select(w => new GetWeatherResponse(w.Date, w.TemperatureC, w.Summary)).ToList()),
+                success: (value) => Ok(value.Weather.Select(w => new GetWeatherResponse(w.Day, w.Temperature.Celsius, w.Temperature.Fahrenheit, w.Summary.Name)).ToList()),
                 failure: (exception) => StatusCode((int)HttpStatusCode.InternalServerError, exception.Message)
             );
     }

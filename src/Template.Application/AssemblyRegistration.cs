@@ -1,12 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Template.Application.Components.Weather.GetWeather;
+using Template.Application.Components.Weather.Queries;
 
 namespace Template.Application;
 public static class AssemblyRegistration
 {
     public static IServiceCollection AddApplicationAssembly(this IServiceCollection services)
     {
-        var assembly = typeof(AssemblyRegistration).Assembly;
 
         services.AddRequestHandlers();
 

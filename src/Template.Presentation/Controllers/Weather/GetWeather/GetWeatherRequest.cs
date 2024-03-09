@@ -2,6 +2,6 @@
 
 namespace Template.Presentation.Controllers.Weather.GetWeather;
 
-public sealed record GetWeatherRequest()
+public sealed record GetWeatherRequest([FromQuery] DateTime? Date)
 {
 }
