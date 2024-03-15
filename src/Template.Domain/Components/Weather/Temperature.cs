@@ -1,4 +1,4 @@
-﻿using Template.Domain.Abstractions;
+﻿using Template.Domain.Abstractions.Primitives;
 
 namespace Template.Domain.Components.Weather;
 public sealed class Temperature : IValueObject

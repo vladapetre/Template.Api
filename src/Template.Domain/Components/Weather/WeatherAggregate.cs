@@ -1,7 +1,5 @@
-﻿using Template.Domain.Abstractions;
-
-namespace Template.Domain.Components.Weather;
-public sealed class WeatherAggregate : IAggregateRoot
+﻿namespace Template.Domain.Components.Weather;
+public sealed class WeatherAggregate : IEntity, IAggregateRoot
 {
     public Temperature Temperature { get; set; }
     public DateOnly Day { get; set; }

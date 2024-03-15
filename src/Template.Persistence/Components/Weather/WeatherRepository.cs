@@ -1,4 +1,7 @@
-﻿namespace Template.Domain.Components.Weather.Repositories;
+﻿using Template.Domain.Components.Weather;
+using Template.Domain.Components.Weather.Repositories;
+
+namespace Template.Persistence.Components.Weather;
 internal class WeatherRepository : IWeatherRepository
 {
     public IUnitOfWork UnitOfWork => throw new NotImplementedException();

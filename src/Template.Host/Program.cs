@@ -16,8 +16,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services
     .AddPresentationAssembly()
-    .AddApplicationAssembly()
-    .AddDomainAssembly();
+    .AddApplicationAssembly();
 
 var app = builder.Build();
 

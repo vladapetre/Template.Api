@@ -21,7 +21,7 @@ public sealed class WeatherController : ControllerBase
         var result = await _getWeatherQueryHandler.HandleAsync(new GetWeatherQuery() { Date = request.Date});
 
         return result.Match<ActionResult>(
-                success: (value) => Ok(value.Weather.Select(w => new GetWeatherResponse(w.Day, w.Temperature.Celsius, w.Temperature.Fahrenheit, w.Summary.Name)).ToList()),
+                success: (value) => Ok(value.Weather.Select(w => new GetWeatherResponse(w.Day, w.Temperature.Celsius, w.Temperature.Fahrenheit, w.Summary.ToString())).ToList()),
                 failure: (exception) => StatusCode((int)HttpStatusCode.InternalServerError, exception.Message)
             );
     }
