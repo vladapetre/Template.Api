@@ -2,13 +2,14 @@
 
 namespace Template.Core.Types;
 
-public abstract record class Enumeration
+public abstract record class Enumeration : IComparable
 {
-    public string Name { get; private set; }
+    public string Name { get; private init; }
 
-    public int Id { get; private set; }
+    public int Id { get; private init; }
 
     protected Enumeration(int id, string name) => (Id, Name) = (id, name);
+
     public override string ToString() => Name;
 
     public static IEnumerable<T> GetAll<T>() where T : Enumeration =>
@@ -62,3 +63,4 @@ public abstract record class Enumeration
 
     public int CompareTo(object? other) => Id.CompareTo(((Enumeration?)other)?.Id);
 }
+
