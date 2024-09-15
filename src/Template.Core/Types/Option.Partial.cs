@@ -11,7 +11,7 @@ namespace Template.Core.Types;
 /// https://github.com/Andreas-Dorfer/functional-extensions/blob/master/src/AD.FunctionalExtensions/Option.cs
 /// </summary>
 /// <typeparam name="TValue"></typeparam>
-public partial record struct Option<TValue> : IEquatable<Option<TValue>>, IComparable<Option<TValue>>, IComparable
+public partial record class Option<TValue> : IEquatable<Option<TValue>>, IComparable<Option<TValue>>, IComparable
 {
     public int CompareTo(object? other) =>
      other switch
