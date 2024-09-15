@@ -11,6 +11,8 @@ public class AssemblyDependencyTests
 
     private readonly Assembly _coreAssembly = typeof(Core.AssemblyMarker).Assembly;
     private readonly Assembly _applicationAssembly = typeof(Application.AssemblyMarker).Assembly;
+    private readonly Assembly _domainAssembly = typeof(Domain.AssemblyMarker).Assembly;
+
 
 
     [Fact]
@@ -20,7 +22,8 @@ public class AssemblyDependencyTests
         var result = Types.InAssembly(_coreAssembly)
             .Should()
             .NotHaveDependencyOnAny(
-                _applicationAssembly.GetName().Name
+                _applicationAssembly.GetName().Name,
+                _domainAssembly.GetName().Name
             )
             .GetResult();
 
@@ -34,7 +37,7 @@ public class AssemblyDependencyTests
         var result = Types.InAssembly(_applicationAssembly)
             .Should()
             .NotHaveDependencyOnAny(
-               "Template.Infrastructure"
+                _domainAssembly.GetName().Name
              )
             .GetResult();
 
