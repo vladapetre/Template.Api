@@ -6,6 +6,27 @@ using System.Threading.Tasks;
 
 namespace Template.Core.Types;
 
+public readonly record struct Result<TError>
+    where TError : notnull
+{
+    private readonly TError? _error;
+
+    private Result(TError? error) => (_error) = (error);
+
+    internal static Result<TError> Success() => new(default);
+    internal static Result<TError> Error(TError err) => new(err);
+
+    public TResult Match<TResult>(Func<TResult> onSuccess, Func<TError, TResult> onError) =>
+        this switch
+        {
+            { _error: null } => onSuccess(),
+            { _error: not null } => onError(_error),
+        };
+
+    public static implicit operator Result<TError>(TError error) => Error(error);
+}
+
+
 public readonly record struct Result<TValue, TError>
     where TValue : notnull
     where TError : notnull
@@ -42,4 +63,12 @@ public static class Result
         where TValue : notnull
         where TError : notnull =>
                Result<TValue, TError>.Error(error);
+
+    public static Result<TError> Success<TError>()
+        where TError : notnull =>
+               Result<TError>.Success();
+
+    public static Result<TError> Error<TError>(TError error)
+        where TError : notnull =>
+               Result<TError>.Error(error);
 }
