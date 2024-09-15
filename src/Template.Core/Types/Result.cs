@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Template.Core.Types;
 
-public record struct Result<TValue, TError>
+public readonly record struct Result<TValue, TError>
     where TValue : notnull
     where TError : notnull
 {

@@ -4,7 +4,7 @@ using System.Reflection;
 using NetArchTest.Rules;
 using Template.Tests.Architecture.Extensions;
 
-namespace Template.Tests.Arch;
+namespace Template.Tests.Architecture;
 
 public class AssemblyDependencyTests
 {
@@ -13,7 +13,6 @@ public class AssemblyDependencyTests
     private readonly Assembly _applicationAssembly = typeof(Application.AssemblyMarker).Assembly;
     private readonly Assembly _domainAssembly = typeof(Domain.AssemblyMarker).Assembly;
     private readonly Assembly _persistenceAssembly = typeof(Persistence.AssemblyMarker).Assembly;
-
 
 
     [Fact]

@@ -11,13 +11,13 @@ namespace Template.Core.Types;
 /// https://github.com/Andreas-Dorfer/functional-extensions/blob/master/src/AD.FunctionalExtensions/Option.cs
 /// </summary>
 /// <typeparam name="TValue"></typeparam>
-public partial record struct Option<TValue> : IEquatable<Option<TValue>>, IComparable<Option<TValue>>, IComparable
+public readonly partial record struct Option<TValue> : IEquatable<Option<TValue>>, IComparable<Option<TValue>>, IComparable
 {
     public int CompareTo(object? other) =>
      other switch
      {
          Option<TValue> obj => CompareTo(obj),
-         _ => throw new ArgumentException(nameof(other))
+         _ => throw new ArgumentException("Object not of corresponding type",nameof(other))
      };
 
     public int CompareTo(Option<TValue> other) =>

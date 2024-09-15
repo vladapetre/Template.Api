@@ -8,4 +8,5 @@ public record class CustomerId
     private CustomerId(Guid id) => (Id) = (id);
 
     public static CustomerId Create() => new(Guid.CreateVersion7());
+    public static CustomerId Create(Guid guid) => new(guid);
 }

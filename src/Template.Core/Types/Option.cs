@@ -8,7 +8,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Template.Core.Types;
 
-public partial record struct Option<TValue>
+public readonly partial record struct  Option<TValue>
         where TValue : notnull
 {
     private readonly TValue? _value;

@@ -8,5 +8,5 @@ public sealed record class SubscriptionType : Enumeration
     {
     }
 
-    public static SubscriptionType Trial = new(1, "Test");
+    public static readonly SubscriptionType Trial = new(1, "Test");
 }
