@@ -1,0 +1,1 @@
+﻿dotnet-ef migrations add Initial --project ./src/Template.Persistence --startup-project ./src/Template.Host --output-dir ./Context/Migrations
