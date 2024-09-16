@@ -1,7 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿namespace Template.Presentation.Components.Customers.CreateCustomer;
 
-namespace Template.Presentation.Components.Customers.CreateCustomer;
-
-public sealed record class CreateCustomerRequest( [Required] string Name )
+public sealed record class CreateCustomerRequest( string Name )
 {
 }

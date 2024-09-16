@@ -5,7 +5,7 @@ using Template.Domain.Components.Customers;
 
 namespace Template.Application.Components.Customers.CreateCustomer;
 
-public interface ICreateCustomerCommandHandler : IRequestHandler<CreateCustomerCommand, Option<Customer>> { }
+public interface ICreateCustomerCommandHandler : IRequestHandler<CreateCustomerCommand, Result<Customer>> { }
 
 public sealed class CreateCustomerCommandHandler : ICreateCustomerCommandHandler
 {
@@ -16,10 +16,15 @@ public sealed class CreateCustomerCommandHandler : ICreateCustomerCommandHandler
         this.unitOfWork = unitOfWork;
     }
 
-    public async Task<Option<Customer>> HandlerAsync( CreateCustomerCommand request )
+    public async Task<Result<Customer>> HandlerAsync( CreateCustomerCommand request )
     {
-        var customer = Customer.Create(request.Name);
+        var customer = await Customer.Create(request.Name)
+            .ContinueAsync(unitOfWork.Customers.Insert);
 
-        return await unitOfWork.Customers.Insert(customer);
+
+
+        return customer;
     }
+
+
 }
