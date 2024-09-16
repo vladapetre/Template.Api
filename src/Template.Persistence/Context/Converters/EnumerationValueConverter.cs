@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Template.Core.Types;
+using Template.Core.Primitives;
 
 namespace Template.Persistence.Context.Converters;
 

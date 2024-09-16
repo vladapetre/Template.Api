@@ -1,8 +1,8 @@
 ﻿using System.Reflection;
 
-namespace Template.Core.Types;
+namespace Template.Core.Primitives;
 
-public abstract record class Enumeration : IComparable
+public abstract record class Enumeration : ValueObject, IComparable
 {
     public string Name { get; private init; }
 

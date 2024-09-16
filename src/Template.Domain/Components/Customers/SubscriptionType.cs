@@ -1,4 +1,4 @@
-﻿using Template.Core.Types;
+﻿using Template.Core.Primitives;
 
 namespace Template.Domain.Components.Customers;
 

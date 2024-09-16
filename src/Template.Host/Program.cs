@@ -1,4 +1,6 @@
-using Template.Persistence.Context;
+using Template.Application;
+using Template.Persistence;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,7 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
-builder.Services.AddDbContext<DatabaseContext>();
+builder.Services.AddApplication();
+builder.Services.AddPersistence();
 
 var app = builder.Build();
 
