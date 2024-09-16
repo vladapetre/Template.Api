@@ -1,3 +1,5 @@
-﻿namespace Template.Domain.Entities;
+﻿using Template.Core.Primitives;
 
-public sealed record class CustomerInformation(string Name);
+namespace Template.Domain.Entities;
+
+public sealed record class CustomerInformation( string Name ) : ValueObject;

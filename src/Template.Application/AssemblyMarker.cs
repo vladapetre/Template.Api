@@ -1,7 +1,7 @@
 ﻿
 namespace Template.Application;
 
-public sealed record class AssemblyMarker 
+public sealed record class AssemblyMarker
 {
-   
+
 }

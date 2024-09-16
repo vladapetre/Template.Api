@@ -1,5 +1,4 @@
-﻿using System.Reflection.Emit;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Template.Domain.Entities;
 using Template.Persistence.Context.Converters;
@@ -8,7 +7,7 @@ namespace Template.Persistence.Context.Configurations;
 
 internal sealed class CustomerConfiguration : IEntityTypeConfiguration<Customer>
 {
-    public void Configure(EntityTypeBuilder<Customer> builder)
+    public void Configure( EntityTypeBuilder<Customer> builder )
     {
         builder
             .HasKey(e => e.Id);

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Template.Application.Abstract;
+﻿using Template.Application.Abstract;
 using Template.Core.Types;
 using Template.Domain.Entities;
 
@@ -13,7 +8,7 @@ public interface ICreateCustomerCommandHandler : IRequestHandler<CreateCustomerC
 
 public sealed class CreateCustomerCommandHandler : ICreateCustomerCommandHandler
 {
-    public async Task<Option<Customer>> HandlerAsync(CreateCustomerCommand request)
+    public async Task<Option<Customer>> HandlerAsync( CreateCustomerCommand request )
     {
         var customer = Customer.Create(request.Name);
 

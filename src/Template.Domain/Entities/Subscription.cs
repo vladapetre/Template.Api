@@ -1,6 +1,8 @@
-﻿namespace Template.Domain.Entities;
+﻿using Template.Core.Primitives;
 
-public abstract record class Subscription
+namespace Template.Domain.Entities;
+
+public abstract record class Subscription : ValueObject
 {
     public abstract SubscriptionType Type { get; protected init; }
 }

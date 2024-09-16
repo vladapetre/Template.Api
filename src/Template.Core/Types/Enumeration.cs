@@ -8,7 +8,7 @@ public abstract record class Enumeration : IComparable
 
     public int Id { get; private init; }
 
-    protected Enumeration(int id, string name) => (Id, Name) = (id, name);
+    protected Enumeration( int id, string name ) => (Id, Name) = (id, name);
 
     public override string ToString() => Name;
 
@@ -19,7 +19,7 @@ public abstract record class Enumeration : IComparable
                     .Select(f => f.GetValue(null))
                     .Cast<T>();
 
-    public virtual bool Equals(Enumeration? obj)
+    public virtual bool Equals( Enumeration? obj )
     {
         if (obj is not Enumeration otherValue)
         {
@@ -34,30 +34,30 @@ public abstract record class Enumeration : IComparable
 
     public override int GetHashCode() => Id.GetHashCode();
 
-    public static int AbsoluteDifference(Enumeration firstValue, Enumeration secondValue)
+    public static int AbsoluteDifference( Enumeration firstValue, Enumeration secondValue )
     {
         var absoluteDifference = Math.Abs(firstValue.Id - secondValue.Id);
         return absoluteDifference;
     }
 
-    public static T FromValue<T>(int value) where T : Enumeration
+    public static T FromValue<T>( int value ) where T : Enumeration
     {
         var matchingItem = Parse<T, int>(value, "value", item => item.Id == value);
         return matchingItem;
     }
 
-    public static T FromDisplayName<T>(string displayName) where T : Enumeration
+    public static T FromDisplayName<T>( string displayName ) where T : Enumeration
     {
         var matchingItem = Parse<T, string>(displayName, "display name", item => item.Name == displayName);
         return matchingItem;
     }
 
-    private static T Parse<T, K>(K value, string description, Func<T, bool> predicate) where T : Enumeration
+    private static T Parse<T, K>( K value, string description, Func<T, bool> predicate ) where T : Enumeration
     {
         var matchingItem = GetAll<T>().FirstOrDefault(predicate) ?? throw new InvalidOperationException($"'{value}' is not a valid {description} in {typeof(T)}");
         return matchingItem;
     }
 
-    public int CompareTo(object? other) => Id.CompareTo(((Enumeration?)other)?.Id);
+    public int CompareTo( object? other ) => Id.CompareTo(((Enumeration?)other)?.Id);
 }
 

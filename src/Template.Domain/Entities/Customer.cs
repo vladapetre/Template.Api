@@ -1,8 +1,8 @@
-﻿using System.Text;
+﻿using Template.Core.Primitives;
 
 namespace Template.Domain.Entities;
 
-public sealed record class Customer
+public sealed record class Customer : AggregateRoot
 {
     public CustomerId Id { get; private init; } = null!;
     public ApiKey ApiKey { get; private init; } = null!;
@@ -11,7 +11,7 @@ public sealed record class Customer
 
     private Customer() { }
 
-    private Customer(Subscription subscription, CustomerInformation information)
+    private Customer( Subscription subscription, CustomerInformation information )
     {
         Id ??= CustomerId.Create();
         ApiKey ??= ApiKey.Create();
@@ -19,7 +19,7 @@ public sealed record class Customer
         Information = information;
     }
 
-    public static Customer Create(string name)
+    public static Customer Create( string name )
         => name switch
         {
             { Length: > 0 } => new(new TrialSubscription(), new CustomerInformation(name)), // does not handle whitespace

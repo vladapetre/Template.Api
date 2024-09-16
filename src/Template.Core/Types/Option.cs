@@ -1,25 +1,17 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+﻿namespace Template.Core.Types;
 
-namespace Template.Core.Types;
-
-public readonly partial record struct  Option<TValue>
+public readonly partial record struct Option<TValue>
         where TValue : notnull
 {
     private readonly TValue? _value;
 
-    private Option(TValue? value) => (_value) = (value);
+    private Option( TValue? value ) => (_value) = (value);
 
-    internal static Option<TValue> Some(TValue obj) => new(obj);
+    internal static Option<TValue> Some( TValue obj ) => new(obj);
     internal static Option<TValue> None => default;
 
 
-    public static implicit operator Option<TValue>(TValue? value) =>
+    public static implicit operator Option<TValue>( TValue? value ) =>
         value switch
         {
             not null => Some(value),
@@ -27,25 +19,25 @@ public readonly partial record struct  Option<TValue>
         };
 
 
-    public TResult Match<TResult>(Func<TValue, TResult> onSome, Func<TResult> onNone) =>
+    public TResult Match<TResult>( Func<TValue, TResult> onSome, Func<TResult> onNone ) =>
         _value switch
         {
             not null => onSome(_value),
             null => onNone()
         };
 
-    public Option<TResult> Bind<TResult>(Func<TValue, Option<TResult>> bind)
+    public Option<TResult> Bind<TResult>( Func<TValue, Option<TResult>> bind )
         where TResult : notnull =>
             Match(
                 onSome: bind,
                 onNone: () => Option<TResult>.None);
 
-    public Option<TResult> Map<TResult>(Func<TValue, TResult> map)
+    public Option<TResult> Map<TResult>( Func<TValue, TResult> map )
         where TResult : notnull =>
             Bind(
                 bind: value => Option<TResult>.Some(map(value)));
 
-    public TValue Default(Func<TValue> defaultValue) =>
+    public TValue Default( Func<TValue> defaultValue ) =>
         Match(
             onSome: value => value,
             onNone: defaultValue);
@@ -57,12 +49,12 @@ public static class Option
     public static Option<TValue> None<TValue>() where TValue : notnull =>
             Option<TValue>.None;
 
-    public static Option<TValue> Some<TValue>(TValue value) where TValue : notnull =>
+    public static Option<TValue> Some<TValue>( TValue value ) where TValue : notnull =>
         Option<TValue>.Some(value);
 
-    public static Option<TValue> Create<TValue>(TValue? value) where TValue : class =>
+    public static Option<TValue> Create<TValue>( TValue? value ) where TValue : class =>
         value is { } some ? Some(some) : None<TValue>();
 
-    public static Option<TValue> Create<TValue>(TValue? value) where TValue : struct =>
+    public static Option<TValue> Create<TValue>( TValue? value ) where TValue : struct =>
         value.HasValue ? Some(value.Value) : None<TValue>();
 }

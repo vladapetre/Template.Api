@@ -1,29 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Template.Core.Types;
+﻿namespace Template.Core.Types;
 
 public readonly record struct Result<TError>
     where TError : notnull
 {
     private readonly TError? _error;
 
-    private Result(TError? error) => (_error) = (error);
+    private Result( TError? error ) => (_error) = (error);
 
     internal static Result<TError> Success() => new(default);
-    internal static Result<TError> Error(TError err) => new(err);
+    internal static Result<TError> Error( TError err ) => new(err);
 
-    public TResult Match<TResult>(Func<TResult> onSuccess, Func<TError, TResult> onError) =>
+    public TResult Match<TResult>( Func<TResult> onSuccess, Func<TError, TResult> onError ) =>
         this switch
         {
             { _error: null } => onSuccess(),
             { _error: not null } => onError(_error),
         };
 
-    public static implicit operator Result<TError>(TError error) => Error(error);
+    public static implicit operator Result<TError>( TError error ) => Error(error);
 }
 
 
@@ -34,12 +28,12 @@ public readonly record struct Result<TValue, TError>
     private readonly TValue? _value;
     private readonly TError? _error;
 
-    private Result(TValue? value, TError? error) => (_value, _error) = (value, error);
+    private Result( TValue? value, TError? error ) => (_value, _error) = (value, error);
 
-    internal static Result<TValue, TError> Success(TValue obj) => new(obj, default);
-    internal static Result<TValue, TError> Error(TError err) => new(default, err);
+    internal static Result<TValue, TError> Success( TValue obj ) => new(obj, default);
+    internal static Result<TValue, TError> Error( TError err ) => new(default, err);
 
-    public TResult Match<TResult>(Func<TValue, TResult> onSuccess, Func<TError, TResult> onError) =>
+    public TResult Match<TResult>( Func<TValue, TResult> onSuccess, Func<TError, TResult> onError ) =>
         this switch
         {
             { _value: not null, _error: null } => onSuccess(_value),
@@ -48,18 +42,18 @@ public readonly record struct Result<TValue, TError>
         };
 
 
-    public static implicit operator Result<TValue, TError>(TError error) => Error(error);
-    public static implicit operator Result<TValue, TError>(TValue value) => Success(value);
+    public static implicit operator Result<TValue, TError>( TError error ) => Error(error);
+    public static implicit operator Result<TValue, TError>( TValue value ) => Success(value);
 }
 
 public static class Result
 {
-    public static Result<TValue, TError> Success<TValue, TError>(TValue value)
+    public static Result<TValue, TError> Success<TValue, TError>( TValue value )
         where TValue : notnull
         where TError : notnull =>
                Result<TValue, TError>.Success(value);
 
-    public static Result<TValue, TError> Error<TValue, TError>(TError error)
+    public static Result<TValue, TError> Error<TValue, TError>( TError error )
         where TValue : notnull
         where TError : notnull =>
                Result<TValue, TError>.Error(error);
@@ -68,7 +62,7 @@ public static class Result
         where TError : notnull =>
                Result<TError>.Success();
 
-    public static Result<TError> Error<TError>(TError error)
+    public static Result<TError> Error<TError>( TError error )
         where TError : notnull =>
                Result<TError>.Error(error);
 }
