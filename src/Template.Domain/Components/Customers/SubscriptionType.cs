@@ -1,6 +1,6 @@
 ﻿using Template.Core.Types;
 
-namespace Template.Domain.Entities;
+namespace Template.Domain.Components.Customers;
 
 public sealed record class SubscriptionType : Enumeration
 {

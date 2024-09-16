@@ -1,11 +1,12 @@
 ﻿namespace Template.Core.Types;
 
-public readonly record struct Result<TError>
+
+file readonly record struct Result<TError>
     where TError : notnull
 {
-    private readonly TError? _error;
+    private readonly TError? error;
 
-    private Result( TError? error ) => (_error) = (error);
+    private Result( TError? error ) => (this.error) = (error);
 
     internal static Result<TError> Success() => new(default);
     internal static Result<TError> Error( TError err ) => new(err);
@@ -13,22 +14,22 @@ public readonly record struct Result<TError>
     public TResult Match<TResult>( Func<TResult> onSuccess, Func<TError, TResult> onError ) =>
         this switch
         {
-            { _error: null } => onSuccess(),
-            { _error: not null } => onError(_error),
+            { error: null } => onSuccess(),
+            { error: not null } => onError(error),
         };
 
     public static implicit operator Result<TError>( TError error ) => Error(error);
 }
 
 
-public readonly record struct Result<TValue, TError>
+file readonly record struct Result<TValue, TError>
     where TValue : notnull
     where TError : notnull
 {
-    private readonly TValue? _value;
-    private readonly TError? _error;
+    private readonly TValue? value;
+    private readonly TError? error;
 
-    private Result( TValue? value, TError? error ) => (_value, _error) = (value, error);
+    private Result( TValue? value, TError? error ) => (this.value, this.error) = (value, error);
 
     internal static Result<TValue, TError> Success( TValue obj ) => new(obj, default);
     internal static Result<TValue, TError> Error( TError err ) => new(default, err);
@@ -36,8 +37,8 @@ public readonly record struct Result<TValue, TError>
     public TResult Match<TResult>( Func<TValue, TResult> onSuccess, Func<TError, TResult> onError ) =>
         this switch
         {
-            { _value: not null, _error: null } => onSuccess(_value),
-            { _value: null, _error: not null } => onError(_error),
+            { value: not null, error: null } => onSuccess(value),
+            { value: null, error: not null } => onError(error),
             _ => throw new InvalidOperationException()
         };
 
@@ -46,7 +47,7 @@ public readonly record struct Result<TValue, TError>
     public static implicit operator Result<TValue, TError>( TValue value ) => Success(value);
 }
 
-public static class Result
+file static class Result
 {
     public static Result<TValue, TError> Success<TValue, TError>( TValue value )
         where TValue : notnull

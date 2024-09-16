@@ -1,5 +1,5 @@
 ﻿namespace Template.Core.Primitives;
 
-public abstract class Entity
+public abstract record class Entity
 {
 }

@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 using Microsoft.EntityFrameworkCore;
-using Template.Domain.Entities;
+using Template.Domain.Components.Customers;
 
 namespace Template.Persistence.Context;
 

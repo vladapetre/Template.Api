@@ -9,22 +9,22 @@ namespace Template.Tests.Architecture;
 public class AssemblyDependencyTests
 {
 
-    private readonly Assembly _coreAssembly = typeof(Core.AssemblyMarker).Assembly;
-    private readonly Assembly _applicationAssembly = typeof(Application.AssemblyMarker).Assembly;
-    private readonly Assembly _domainAssembly = typeof(Domain.AssemblyMarker).Assembly;
-    private readonly Assembly _persistenceAssembly = typeof(Persistence.AssemblyMarker).Assembly;
+    private readonly Assembly coreAssembly = typeof(Core.AssemblyMarker).Assembly;
+    private readonly Assembly applicationAssembly = typeof(Application.AssemblyMarker).Assembly;
+    private readonly Assembly domainAssembly = typeof(Domain.AssemblyMarker).Assembly;
+    private readonly Assembly persistenceAssembly = typeof(Persistence.AssemblyMarker).Assembly;
 
 
     [Fact]
     public void GivenCoreAssembly_ThenShouldNotHaveDependencyOnAnyAssembly()
     {
 
-        var result = Types.InAssembly(_coreAssembly)
+        var result = Types.InAssembly(this.coreAssembly)
             .Should()
             .NotHaveDependencyOnAny(
-                _applicationAssembly.GetName().Name,
-                _domainAssembly.GetName().Name,
-                _persistenceAssembly.GetName().Name
+                applicationAssembly.GetName().Name,
+                domainAssembly.GetName().Name,
+                persistenceAssembly.GetName().Name
             )
             .GetResult();
 
@@ -35,11 +35,11 @@ public class AssemblyDependencyTests
     public void GivenDomainAssembly_ThenShouldOnlyHaveDependencyOnCoreAssembly()
     {
 
-        var result = Types.InAssembly(_domainAssembly)
+        var result = Types.InAssembly(this.domainAssembly)
             .Should()
             .NotHaveDependencyOnAny(
-                _applicationAssembly.GetName().Name,
-                _persistenceAssembly.GetName().Name
+                applicationAssembly.GetName().Name,
+                persistenceAssembly.GetName().Name
             )
             .GetResult();
 
@@ -50,11 +50,11 @@ public class AssemblyDependencyTests
     [Fact]
     public void GivenApplicationAssembly_ThenShouldOnlyHaveDependencyOnCoreAssembly()
     {
-        var result = Types.InAssembly(_applicationAssembly)
+        var result = Types.InAssembly(applicationAssembly)
             .Should()
             .NotHaveDependencyOnAny(
-                _domainAssembly.GetName().Name,
-                _persistenceAssembly.GetName().Name
+                domainAssembly.GetName().Name,
+                persistenceAssembly.GetName().Name
              )
             .GetResult();
 
@@ -64,10 +64,10 @@ public class AssemblyDependencyTests
     [Fact]
     public void GivenPersistenceAssembly_ThenShouldOnlyHaveDependencyOnCoreAndDomainAssembly()
     {
-        var result = Types.InAssembly(_persistenceAssembly)
+        var result = Types.InAssembly(persistenceAssembly)
             .Should()
             .NotHaveDependencyOnAny(
-                _applicationAssembly.GetName().Name
+                applicationAssembly.GetName().Name
              )
             .GetResult();
 

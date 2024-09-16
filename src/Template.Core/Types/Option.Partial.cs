@@ -25,11 +25,11 @@ public readonly partial record struct Option<TValue> : IEquatable<Option<TValue>
 
     private int CompareTo( Option<TValue> other, Func<TValue, TValue, int> compare )
     {
-        if (_value is null)
+        if (value is null)
         {
-            return other._value is not null ? -1 : 0;
+            return other.value is not null ? -1 : 0;
         }
-        return other._value is null ? 1 : compare(_value, other._value);
+        return other.value is null ? 1 : compare(value, other.value);
     }
 
     public static bool operator <( Option<TValue> a, Option<TValue> b ) =>
@@ -44,5 +44,5 @@ public readonly partial record struct Option<TValue> : IEquatable<Option<TValue>
     public static bool operator >=( Option<TValue> a, Option<TValue> b ) =>
         a.CompareTo(b) >= 0;
 
-    public override string ToString() => _value is not null ? $"Some({_value})" : "None";
+    public override string ToString() => value is not null ? $"Some({value})" : "None";
 }

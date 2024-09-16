@@ -1,5 +1,5 @@
 ﻿namespace Template.Core.Primitives;
 
-public abstract record class AggregateRoot
+public abstract record class AggregateRoot : Entity
 {
 }

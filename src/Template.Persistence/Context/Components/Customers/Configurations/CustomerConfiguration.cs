@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Template.Domain.Entities;
+using Template.Domain.Components.Customers;
+using Template.Persistence.Context.Components.Customers.Converters;
 using Template.Persistence.Context.Converters;
 
-namespace Template.Persistence.Context.Configurations;
+namespace Template.Persistence.Context.Components.Customers.Configurations;
 
 internal sealed class CustomerConfiguration : IEntityTypeConfiguration<Customer>
 {

@@ -3,9 +3,9 @@
 public readonly partial record struct Option<TValue>
         where TValue : notnull
 {
-    private readonly TValue? _value;
+    private readonly TValue? value;
 
-    private Option( TValue? value ) => (_value) = (value);
+    private Option( TValue? value ) => (this.value) = (value);
 
     internal static Option<TValue> Some( TValue obj ) => new(obj);
     internal static Option<TValue> None => default;
@@ -20,9 +20,9 @@ public readonly partial record struct Option<TValue>
 
 
     public TResult Match<TResult>( Func<TValue, TResult> onSome, Func<TResult> onNone ) =>
-        _value switch
+        value switch
         {
-            not null => onSome(_value),
+            not null => onSome(value),
             null => onNone()
         };
 
