@@ -3,7 +3,7 @@ using Template.Core.Primitives;
 
 namespace Template.Persistence.Context.Converters;
 
-internal sealed class EnumerationValueConverter<TEnumeration> : ValueConverter<Enumeration, int> where TEnumeration : Enumeration
+internal sealed class EnumerationValueConverter<TEnumeration> : ValueConverter<TEnumeration, int> where TEnumeration : Enumeration
 {
     public EnumerationValueConverter()
         : base(

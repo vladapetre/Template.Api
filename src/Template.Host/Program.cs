@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Mvc;
 using Template.Application;
+using Template.Application.Components.Customers.CreateCustomer;
 using Template.Persistence;
 
 
@@ -21,4 +23,17 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.MapPost("/customers", async ( [FromBody] CreateCustomerRequest request, ICreateCustomerCommandHandler handler ) =>
+{
+    var result = await handler.HandlerAsync(new CreateCustomerCommand(request.Name));
 
+    return result.Match(
+        ( customer ) => Results.Ok(customer),
+        () => Results.BadRequest("stuff happened"));
+});
+
+app.Run();
+
+internal sealed record class CreateCustomerRequest( string Name )
+{
+}

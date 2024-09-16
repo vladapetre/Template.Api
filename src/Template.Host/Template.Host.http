@@ -1,6 +1,9 @@
 @Template.Host_HostAddress = http://localhost:5145
 
-GET {{Template.Host_HostAddress}}/weatherforecast/
+POST {{Template.Host_HostAddress}}/customers
 Accept: application/json
-
+Content-Type: application/json
+{
+    "name" : "vlad"
+}
 ###
