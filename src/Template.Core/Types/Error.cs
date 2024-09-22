@@ -2,14 +2,13 @@
 
 namespace Template.Core.Types;
 
-public record class Error
+public readonly record struct Error
 {
-    public readonly HttpStatusCode Code;
-    public readonly string Message;
+    public int Code { get; private init; }
+    public string Message { get; private init; }
 
-    private Error( HttpStatusCode code, string message ) => (Code, Message) = (code, message);
+    public Error( int code, string message ) => (this.Code, this.Message) = (code, message);
+    public Error( int code, Exception exception ) => (this.Code, this.Message) = (code, exception.Message);
 
-    public static Error BadRequest( string message = "" ) => new(HttpStatusCode.BadRequest, message);
-    public static Error NotFound( string message = "" ) => new(HttpStatusCode.NotFound, message);
-
+    public static Error NotFound => new((int)HttpStatusCode.NotFound, nameof(NotFound));
 }

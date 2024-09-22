@@ -19,7 +19,7 @@ public sealed class CreateCustomerCommandHandler : ICreateCustomerCommandHandler
     public async Task<Result<Customer>> HandlerAsync( CreateCustomerCommand request )
     {
         var customer = await Customer.Create(request.Name)
-            .ContinueAsync(unitOfWork.Customers.Insert);
+            .MapAsync(unitOfWork.Customers.Insert);
 
 
 
