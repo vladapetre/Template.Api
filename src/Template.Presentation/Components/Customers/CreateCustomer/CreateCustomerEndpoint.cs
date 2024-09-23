@@ -22,7 +22,7 @@ public static class CreateCustomerEndpoint
 
                 return result.Match(
                     onSuccess: ( customer ) => Results.Created($"/customers/{customer.Id.Id}", customer),
-                    onError: ( error ) => Results.Problem(detail: error.Message, statusCode: (int)error.Code));
+                    onError: ( error ) => Results.Problem(detail: error.Message, statusCode: error.Code));
             };
 
 }
