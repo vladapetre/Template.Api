@@ -14,7 +14,7 @@ internal sealed class CustomerRepository : ICustomerRepository
         this.databaseContext = databaseContext;
     }
 
-    public async Task<Result<Customer>> Insert( Customer customer )
+    public async Task<Result<Customer>> AddAsync( Customer customer )
     {
         await databaseContext.AddAsync(customer);
         await databaseContext.SaveChangesAsync();

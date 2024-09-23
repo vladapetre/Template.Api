@@ -1,8 +1,10 @@
-﻿namespace Template.Application.Abstract;
+﻿using Template.Core.Types;
 
-public interface IRequestHandler<TRequest, TResult>
+namespace Template.Application.Abstract;
+
+public interface IRequestHandler<in TRequest, TResult>
     where TRequest : IRequest
     where TResult : notnull
 {
-    public Task<TResult> HandlerAsync( TRequest request );
+    public Task<Result<TResult>> HandlerAsync( TRequest request );
 }
