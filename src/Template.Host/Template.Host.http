@@ -4,6 +4,6 @@ POST {{Template.Host_HostAddress}}/customers
 Accept: application/json
 Content-Type: application/json
 {
-    "name" : null
+    "name" : "Vlad"
 }
 ###

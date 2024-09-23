@@ -1,8 +1,6 @@
-﻿using Template.Core.Types;
-
-namespace Template.Domain.Components.Customers.Persistence;
+﻿namespace Template.Domain.Components.Customers.Persistence;
 
 public interface ICustomerRepository
 {
-    public Task<Result<Customer>> AddAsync( Customer customer );
+    public Task<Customer> AddAsync( Customer customer );
 }

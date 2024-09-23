@@ -21,6 +21,8 @@ public sealed class CreateCustomerCommandHandler : ICreateCustomerCommandHandler
         var customer = await Customer.Create(request.Name)
             .ContinueAsync(unitOfWork.Customers.AddAsync);
 
+        await unitOfWork.SaveChangesAsync();
+
         return customer;
     }
 }

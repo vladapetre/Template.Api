@@ -6,4 +6,5 @@ public interface IUnitOfWork
 {
     ICustomerRepository Customers { get; }
 
+    public Task SaveChangesAsync( CancellationToken cancellationToken = default );
 }
