@@ -1,6 +1,6 @@
 ﻿using Template.Domain.Components.Customers.Models;
 
-namespace Template.Domain.Components.Customers.Persistence;
+namespace Template.Application.Components.Customers.Persistence;
 
 public interface ICustomerRepository
 {

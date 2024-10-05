@@ -1,5 +1,5 @@
-﻿using Template.Domain.Components.Customers.Models;
-using Template.Domain.Components.Customers.Persistence;
+﻿using Template.Application.Components.Customers.Persistence;
+using Template.Domain.Components.Customers.Models;
 using Template.Persistence.Context;
 
 namespace Template.Persistence.Components.Customers;

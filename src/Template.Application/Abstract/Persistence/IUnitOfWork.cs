@@ -1,6 +1,6 @@
-﻿using Template.Domain.Components.Customers.Persistence;
+﻿using Template.Application.Components.Customers.Persistence;
 
-namespace Template.Domain.Abstract.Persistence;
+namespace Template.Application.Abstract.Persistence;
 
 public interface IUnitOfWork
 {

@@ -13,6 +13,8 @@ public class AssemblyDependencyTests
     private readonly Assembly applicationAssembly = typeof(Application.AssemblyMarker).Assembly;
     private readonly Assembly domainAssembly = typeof(Domain.AssemblyMarker).Assembly;
     private readonly Assembly persistenceAssembly = typeof(Persistence.AssemblyMarker).Assembly;
+    private readonly Assembly presentationAssembly = typeof(Presentation.AssemblyMarker).Assembly;
+
 
 
     [Fact]
@@ -24,7 +26,8 @@ public class AssemblyDependencyTests
             .NotHaveDependencyOnAny(
                 applicationAssembly.GetName().Name,
                 domainAssembly.GetName().Name,
-                persistenceAssembly.GetName().Name
+                persistenceAssembly.GetName().Name,
+                presentationAssembly.GetName().Name
             )
             .GetResult();
 
@@ -39,7 +42,8 @@ public class AssemblyDependencyTests
             .Should()
             .NotHaveDependencyOnAny(
                 applicationAssembly.GetName().Name,
-                persistenceAssembly.GetName().Name
+                persistenceAssembly.GetName().Name,
+                presentationAssembly.GetName().Name
             )
             .GetResult();
 
@@ -48,13 +52,13 @@ public class AssemblyDependencyTests
 
 
     [Fact]
-    public void GivenApplicationAssembly_ThenShouldOnlyHaveDependencyOnCoreAssembly()
+    public void GivenApplicationAssembly_ThenShouldOnlyHaveDependencyOnCoreAndDomainAssembly()
     {
         var result = Types.InAssembly(applicationAssembly)
             .Should()
             .NotHaveDependencyOnAny(
-                domainAssembly.GetName().Name,
-                persistenceAssembly.GetName().Name
+                persistenceAssembly.GetName().Name,
+                presentationAssembly.GetName().Name
              )
             .GetResult();
 
@@ -62,12 +66,12 @@ public class AssemblyDependencyTests
     }
 
     [Fact]
-    public void GivenPersistenceAssembly_ThenShouldOnlyHaveDependencyOnCoreAndDomainAssembly()
+    public void GivenPersistenceAssembly_ThenShouldOnlyHaveDependencyOnCoreAndApplicationAndDomainAssembly()
     {
         var result = Types.InAssembly(persistenceAssembly)
             .Should()
             .NotHaveDependencyOnAny(
-                applicationAssembly.GetName().Name
+                presentationAssembly.GetName().Name
              )
             .GetResult();
 

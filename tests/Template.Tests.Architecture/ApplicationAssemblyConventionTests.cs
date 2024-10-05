@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 using NetArchTest.Rules;
-using Template.Application.Abstract;
+using Template.Application.Abstract.Requests;
 using Template.Tests.Architecture.Extensions;
 
 namespace Template.Tests.Architecture;

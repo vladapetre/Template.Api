@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Template.Application.Components.Customers.CreateCustomer;
+using Template.Application.Components.Customers.Requests.CreateCustomer;
 
 namespace Template.Application;
 

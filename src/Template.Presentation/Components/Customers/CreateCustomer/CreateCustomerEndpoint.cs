@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
-using Template.Application.Components.Customers.CreateCustomer;
+using Template.Application.Components.Customers.Requests.CreateCustomer;
 
 namespace Template.Presentation.Components.Customers.CreateCustomer;
 
