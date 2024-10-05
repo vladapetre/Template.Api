@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Template.Domain.Components.Customers;
+using Template.Domain.Components.Customers.Models;
 using Template.Persistence.Context.Components.Customers.Converters;
 using Template.Persistence.Context.Converters;
 

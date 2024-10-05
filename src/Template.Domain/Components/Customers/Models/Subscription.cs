@@ -1,6 +1,6 @@
 ﻿using Template.Core.Primitives;
 
-namespace Template.Domain.Components.Customers;
+namespace Template.Domain.Components.Customers.Models;
 
 public abstract record class Subscription : ValueObject
 {

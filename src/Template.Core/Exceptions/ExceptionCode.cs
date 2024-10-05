@@ -10,7 +10,7 @@ public readonly record struct ExceptionCode
     private ExceptionCode( int code, string message ) => (Code, Message) = (code, message);
     private ExceptionCode( int code, Exception exception ) => (Code, Message) = (code, exception.Message);
 
-    public static ExceptionCode NotFound( string message ) => new((int)HttpStatusCode.NotFound, message ?? nameof(NotFound));
-    public static ExceptionCode BadRequest( string message ) => new((int)HttpStatusCode.BadRequest, message ?? nameof(BadRequest));
+    public static ExceptionCode NotFound( string? message = null ) => new((int)HttpStatusCode.NotFound, message ?? nameof(NotFound));
+    public static ExceptionCode BadRequest( string? message = null ) => new((int)HttpStatusCode.BadRequest, message ?? nameof(BadRequest));
 
 }

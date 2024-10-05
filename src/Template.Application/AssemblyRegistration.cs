@@ -11,4 +11,5 @@ public static class AssemblyRegistration
 
         return services;
     }
+
 }

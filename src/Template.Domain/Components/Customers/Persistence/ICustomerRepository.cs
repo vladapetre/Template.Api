@@ -1,4 +1,6 @@
-﻿namespace Template.Domain.Components.Customers.Persistence;
+﻿using Template.Domain.Components.Customers.Models;
+
+namespace Template.Domain.Components.Customers.Persistence;
 
 public interface ICustomerRepository
 {

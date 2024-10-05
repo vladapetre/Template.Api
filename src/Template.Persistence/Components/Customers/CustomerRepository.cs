@@ -1,4 +1,4 @@
-﻿using Template.Domain.Components.Customers;
+﻿using Template.Domain.Components.Customers.Models;
 using Template.Domain.Components.Customers.Persistence;
 using Template.Persistence.Context;
 

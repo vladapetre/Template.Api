@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Template.Domain.Components.Customers;
+using Template.Domain.Components.Customers.Models;
 
 namespace Template.Persistence.Context.Components.Customers.Converters;
 

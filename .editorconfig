@@ -87,7 +87,7 @@ dotnet_style_parentheses_in_other_operators = never_if_unnecessary:silent
 csharp_using_directive_placement = outside_namespace:silent
 csharp_prefer_simple_using_statement = true:suggestion
 csharp_prefer_braces = true:silent
-csharp_style_namespace_declarations = block_scoped:silent
+csharp_style_namespace_declarations = file_scoped:silent
 csharp_style_prefer_method_group_conversion = true:silent
 csharp_style_prefer_top_level_statements = true:silent
 csharp_style_prefer_primary_constructors = true:suggestion
@@ -145,3 +145,7 @@ dotnet_diagnostic.CS8603.severity = error
 
 #CS8604: Possible null reference argument for parameter.
 dotnet_diagnostic.CS8604.severity = error
+dotnet_style_operator_placement_when_wrapping = beginning_of_line
+tab_width = 4
+indent_size = 4
+end_of_line = crlf

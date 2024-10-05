@@ -1,7 +1,7 @@
 ﻿using Template.Core.Exceptions;
 using Template.Core.Primitives;
 
-namespace Template.Domain.Components.Customers;
+namespace Template.Domain.Components.Customers.Models;
 
 public sealed record class Customer : AggregateRoot
 {
@@ -24,6 +24,6 @@ public sealed record class Customer : AggregateRoot
         => name switch
         {
             { Length: > 0 } => new Customer(new TrialSubscription(), new CustomerInformation(name)), // does not handle whitespace
-            _ => throw new Core.Exceptions.CoreException(ExceptionCode.BadRequest($$"""Cannot create customer. Invalid parameter name : {{{name}}}""")) //
+            _ => throw new CoreException(ExceptionCode.BadRequest($$"""Cannot create customer. Invalid parameter name : {{{name}}}""")) //
         };
 }

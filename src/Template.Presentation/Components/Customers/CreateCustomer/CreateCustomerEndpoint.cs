@@ -18,7 +18,7 @@ public static class CreateCustomerEndpoint
             =>
             {
                 var command = new CreateCustomerCommand(request.Name);
-                var result = await createCustomerCommandHandler.HandlerAsync(command);
+                var result = await createCustomerCommandHandler.HandleAsync(command);
 
                 return Results.Created($"/customers/{result.Id.Id}", result);
             };
