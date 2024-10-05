@@ -20,9 +20,7 @@ public static class CreateCustomerEndpoint
                 var command = new CreateCustomerCommand(request.Name);
                 var result = await createCustomerCommandHandler.HandlerAsync(command);
 
-                return result.Match(
-                    onSuccess: ( customer ) => Results.Created($"/customers/{customer.Id.Id}", customer),
-                    onError: ( error ) => Results.Problem(detail: error.Message, statusCode: error.Code));
+                return Results.Created($"/customers/{result.Id.Id}", result);
             };
 
 }

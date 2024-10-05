@@ -16,13 +16,13 @@ public sealed class CreateCustomerCommandHandler : ICreateCustomerCommandHandler
         this.unitOfWork = unitOfWork;
     }
 
-    public async Task<Result<Customer>> HandlerAsync( CreateCustomerCommand request )
+    public async Task<Customer> HandlerAsync( CreateCustomerCommand request )
     {
         var customer = await Customer.Create(request.Name)
             .ContinueAsync(unitOfWork.Customers.AddAsync);
 
         await unitOfWork.SaveChangesAsync();
 
-        return customer;
+        return customer.GetValueOrThrow(new NotImplementedException());
     }
 }

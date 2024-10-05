@@ -1,5 +1,10 @@
-
-[*.{cs,vb}]
+[
+    "*.",
+    {
+        "cs",
+        "vb"
+    }
+]
 #### Naming styles ####
 
 # Naming rules
@@ -134,6 +139,9 @@ dotnet_diagnostic.CA1852.severity = error
 
 #CS8625: Cannot convert null literal to non-nullable reference type.
 dotnet_diagnostic.CS8625.severity = error
+
+#CS8603: Possible null reference return.
+dotnet_diagnostic.CS8603.severity = error
 
 #CS8604: Possible null reference argument for parameter.
 dotnet_diagnostic.CS8604.severity = error

@@ -1,5 +1,4 @@
 ﻿using Template.Core.Primitives;
-using Template.Core.Types;
 
 namespace Template.Domain.Components.Customers;
 
@@ -20,10 +19,10 @@ public sealed record class Customer : AggregateRoot
         Information = information;
     }
 
-    public static Result<Customer> Create( string name )
+    public static Customer? Create( string name )
         => name switch
         {
             { Length: > 0 } => new Customer(new TrialSubscription(), new CustomerInformation(name)), // does not handle whitespace
-            _ => Error.BadRequest($$"""Cannot create customer. Invalid parameter name : {{{name}}}"""),
+            _ => throw new Exception() //Error.BadRequest($$"""Cannot create customer. Invalid parameter name : {{{name}}}"""),
         };
 }
