@@ -13,12 +13,9 @@ internal sealed class CustomerRepository : ICustomerRepository
         this.databaseContext = databaseContext;
     }
 
-    public async Task<Customer?> AddAsync( Customer? customer )
+    public async Task<Customer> AddAsync( Customer customer )
     {
-        if (customer is not null)
-        {
-            await databaseContext.AddAsync(customer);
-        }
+        await databaseContext.AddAsync(customer);
 
         return customer;
     }

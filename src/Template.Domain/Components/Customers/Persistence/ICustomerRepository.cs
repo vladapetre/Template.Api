@@ -2,5 +2,5 @@
 
 public interface ICustomerRepository
 {
-    public Task<Customer?> AddAsync( Customer? customer );
+    public Task<Customer> AddAsync( Customer customer );
 }
