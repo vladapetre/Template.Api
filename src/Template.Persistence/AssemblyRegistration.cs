@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Template.Application.Abstract.Persistence;
+using Template.Application.Components.Abstract.Persistence;
 using Template.Application.Components.Customers.Persistence;
-using Template.Persistence.Abstract;
+using Template.Persistence.Components.Abstract;
 using Template.Persistence.Components.Customers;
 using Template.Persistence.Context;
 

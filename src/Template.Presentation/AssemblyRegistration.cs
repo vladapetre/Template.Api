@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
-using Template.Presentation.Components.Customers.CreateCustomer;
+using Template.Presentation.Scenarios.CreateCustomer;
 
 namespace Template.Presentation;
 

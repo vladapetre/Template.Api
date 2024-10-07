@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
-using Template.Application.Components.Customers.Requests.CreateCustomer;
+using Template.Application.Scenarios.CreateCustomer;
 
-namespace Template.Presentation.Components.Customers.CreateCustomer;
+namespace Template.Presentation.Scenarios.CreateCustomer;
 
 public static class CreateCustomerEndpoint
 {
@@ -14,7 +14,7 @@ public static class CreateCustomerEndpoint
     }
 
     private static Func<CreateCustomerRequest, ICreateCustomerCommandHandler, Task<IResult>> CreateCustomer =>
-        async ( CreateCustomerRequest request, ICreateCustomerCommandHandler createCustomerCommandHandler )
+        async ( request, createCustomerCommandHandler )
             =>
             {
                 var command = new CreateCustomerCommand(request.Name);

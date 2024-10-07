@@ -1,4 +1,4 @@
-﻿namespace Template.Application.Abstract.Requests;
+﻿namespace Template.Application.Components.Abstract.Requests;
 
 public interface IRequestHandler<in TRequest, TResult>
     where TRequest : IRequest

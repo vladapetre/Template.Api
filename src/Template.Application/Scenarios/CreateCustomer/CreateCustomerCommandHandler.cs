@@ -1,9 +1,9 @@
-﻿using Template.Application.Abstract.Persistence;
-using Template.Application.Abstract.Requests;
+﻿using Template.Application.Components.Abstract.Persistence;
+using Template.Application.Components.Abstract.Requests;
 using Template.Core.Types;
 using Template.Domain.Components.Customers.Models;
 
-namespace Template.Application.Components.Customers.Requests.CreateCustomer;
+namespace Template.Application.Scenarios.CreateCustomer;
 
 public interface ICreateCustomerCommandHandler : IRequestHandler<CreateCustomerCommand, Customer> { }
 

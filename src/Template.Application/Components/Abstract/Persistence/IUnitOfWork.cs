@@ -1,6 +1,6 @@
 ﻿using Template.Application.Components.Customers.Persistence;
 
-namespace Template.Application.Abstract.Persistence;
+namespace Template.Application.Components.Abstract.Persistence;
 
 public interface IUnitOfWork
 {

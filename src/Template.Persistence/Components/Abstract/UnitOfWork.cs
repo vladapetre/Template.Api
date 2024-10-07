@@ -1,8 +1,8 @@
-﻿using Template.Application.Abstract.Persistence;
+﻿using Template.Application.Components.Abstract.Persistence;
 using Template.Application.Components.Customers.Persistence;
 using Template.Persistence.Context;
 
-namespace Template.Persistence.Abstract;
+namespace Template.Persistence.Components.Abstract;
 
 internal sealed class UnitOfWork : IUnitOfWork
 {
