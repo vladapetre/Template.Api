@@ -1,4 +1,6 @@
-﻿namespace Template.Core.Primitives;
+﻿using System.Linq.Expressions;
+
+namespace Template.Core.Primitives;
 
 public abstract record class Entity
 {
