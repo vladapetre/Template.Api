@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template.Tests.Architecture
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template.Domain", "src\Template.Domain\Template.Domain.csproj", "{1DFFEEFD-65C3-499B-8D76-A8254A5BE14E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template.Persistence", "src\Template.Persistence\Template.Persistence.csproj", "{EC0B9288-6338-482F-AA0F-E1451DCB0A97}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template.Transaction", "src\Template.Transaction\Template.Transaction.csproj", "{EC0B9288-6338-482F-AA0F-E1451DCB0A97}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template.Host", "src\Template.Host\Template.Host.csproj", "{6BC6F0FF-2324-4EDA-8F94-9DF188328621}"
 EndProject

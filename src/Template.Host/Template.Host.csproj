@@ -20,7 +20,7 @@
     <ProjectReference Include="..\Template.Application\Template.Application.csproj" />
     <ProjectReference Include="..\Template.Core\Template.Core.csproj" />
     <ProjectReference Include="..\Template.Domain\Template.Domain.csproj" />
-    <ProjectReference Include="..\Template.Persistence\Template.Persistence.csproj" />
+    <ProjectReference Include="..\Template.Transaction\Template.Transaction.csproj" />
     <ProjectReference Include="..\Template.Presentation\Template.Presentation.csproj" />
   </ItemGroup>
 

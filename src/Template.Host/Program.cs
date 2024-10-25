@@ -1,6 +1,6 @@
 using Template.Application;
 using Template.Host.Middleware;
-using Template.Persistence;
+using Template.Transaction;
 using Template.Presentation;
 
 
@@ -11,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenApi();
 
 builder.Services.AddApplication();
-builder.Services.AddPersistence();
+builder.Services.AddPersistence(builder.Configuration);
 
 builder.Services.AddExceptionHandler<CoreExceptionHandler>();
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
@@ -33,6 +33,3 @@ app.MapEndpoints();
 
 app.Run();
 
-internal sealed record class CreateCustomerRequest( string Name )
-{
-}

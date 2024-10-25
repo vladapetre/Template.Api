@@ -1,23 +1,28 @@
 ﻿using Template.Core.Exceptions;
 using Template.Core.Primitives;
+using Template.Domain.Components.Customers.Events;
 
 namespace Template.Domain.Components.Customers.Models;
 
 public sealed record class Customer : AggregateRoot
 {
-    public CustomerId Id { get; private init; } = null!;
-    public ApiKey ApiKey { get; private init; } = null!;
-    public Subscription Subscription { get; private init; } = null!;
-    public CustomerInformation Information { get; private init; } = null!;
+    public CustomerId Id { get; private init; } 
+    public ApiKey ApiKey { get; private init; } 
+    public Subscription Subscription { get; private init; } 
+    public CustomerInformation Information { get; private init; } 
 
-    private Customer() { }
+    private Customer(  )
+    {
+    }
 
-    private Customer( Subscription subscription, CustomerInformation information )
+    private Customer( Subscription subscription, CustomerInformation information)
     {
         Id ??= CustomerId.Create();
         ApiKey ??= ApiKey.Create();
         Subscription = subscription;
         Information = information;
+        
+        RaiseEvent(new CustomerCreatedEvent(Id));
     }
 
     public static Customer? Create( string name )

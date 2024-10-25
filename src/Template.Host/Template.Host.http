@@ -1,9 +1,8 @@
-@Template.Host_HostAddress = http://localhost:5145
-
-POST {{Template.Host_HostAddress}}/customers
+POST https://localhost:44393/customers
 Accept: application/json
 Content-Type: application/json
-{
-    "name" : ""
+
+{ 
+  "name" : "Vlad"
 }
 ###
