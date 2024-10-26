@@ -33,10 +33,13 @@ internal sealed class UnitOfWork : IUnitOfWork
 
         await  entities
             .SelectMany(entity => entity.Events)
-            .ExecuteAsync( (e) =>  publishEndpoint.Publish(e, cancellationToken));
+            .ExecuteAsync( (e) =>  PublishEventAsync(e, cancellationToken));
 
         entities.Execute(entity => entity.ClearEvents());
 
         await context.SaveChangesAsync(cancellationToken);
     }
+
+    private async Task PublishEventAsync<TEvent>( TEvent @event, CancellationToken cancellationToken ) where TEvent : class, IEvent  =>
+        await publishEndpoint.Publish(@event as object,cancellationToken);
 }

@@ -14,16 +14,16 @@ namespace Template.Transaction;
 
 public static class AssemblyRegistration
 {
-    public static IServiceCollection AddTransaction( this IServiceCollection services, IConfiguration configuration )
+    public static void AddTransaction(this IServiceCollection services, IConfiguration configuration, Action<IBusRegistrationConfigurator>? configureConsumers = null)
     {
-        var persistenceConfiguration = configuration
-           .GetSection(nameof(TransactionConfiguration))
-           .Get<TransactionConfiguration>()
-                ?? throw new ArgumentNullException(nameof(TransactionConfiguration));
+        var transactionConfiguration = configuration
+                                           .GetSection(nameof(TransactionConfiguration))
+                                           .Get<TransactionConfiguration>()
+                                       ?? throw new ArgumentNullException(nameof(TransactionConfiguration));
 
         services.AddDbContext<DatabaseContext>(options =>
         {
-            options.UseSqlite(persistenceConfiguration.ConnectionStrings.DatabaseContext,
+            options.UseSqlite(transactionConfiguration.ConnectionStrings.DatabaseContext,
                 cfg =>
                 {
                     cfg.MigrationsAssembly(typeof(DatabaseContext).Assembly.FullName);
@@ -36,23 +36,27 @@ public static class AssemblyRegistration
             config.AddEntityFrameworkOutbox<DatabaseContext>(cfg =>
             {
                 cfg.QueryDelay = TimeSpan.FromSeconds(30);
+                cfg.DuplicateDetectionWindow = TimeSpan.FromMinutes(1);
                 cfg.UseSqlite().UseBusOutbox();
             });
 
+            
+            
             config.SetKebabCaseEndpointNameFormatter();
 
-            config.UsingInMemory(( ctx, cfg ) =>
+            config.UsingRabbitMq(( ctx, cfg ) =>
             {
-                //cfg.Host(outboxConfiguration.ConnectionStrings.RabbitMQ);
+                cfg.MessageTopology.SetEntityNameFormatter(new TransactionEntityNameFormatter());
+                cfg.Host(transactionConfiguration.ConnectionStrings.RabbitMQ);
                 cfg.UseMessageRetry(retry =>
                     retry.Exponential(10, TimeSpan.FromSeconds(5), TimeSpan.FromSeconds(60), TimeSpan.FromSeconds(5)));
                 cfg.ConfigureEndpoints(ctx);
             });
+
+            configureConsumers?.Invoke(config);
         });
 
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<ICustomerRepository, CustomerRepository>();
-
-        return services;
     }
 }
