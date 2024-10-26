@@ -12,6 +12,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
+builder.Services.AddScoped<CorrelationContext>((_) => ContextFactory.CreateCorrelationContext);
+
 builder.Services.AddApplication();
 builder.Services.AddTransaction(builder.Configuration, null);
 
@@ -24,8 +26,6 @@ builder.Services.AddSerilog(( context, config ) =>
     config.ReadFrom.Configuration(builder.Configuration);
     config.Enrich.FromLogContext();
 });
-
-builder.Services.AddScoped<CorrelationContext>((_) => ContextFactory.CreateCorrelationContext);
 
 var app = builder.Build();
 

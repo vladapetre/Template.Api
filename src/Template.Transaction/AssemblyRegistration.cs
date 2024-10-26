@@ -8,6 +8,7 @@ using Template.Application.Components.Customers.Persistence;
 using Template.Transaction.Components.Abstract;
 using Template.Transaction.Components.Customers;
 using Template.Transaction.Configuration;
+using Template.Transaction.Configuration.RabbitMQ;
 using Template.Transaction.Context;
 
 namespace Template.Transaction;
@@ -46,8 +47,14 @@ public static class AssemblyRegistration
 
             config.UsingRabbitMq(( ctx, cfg ) =>
             {
-                cfg.MessageTopology.SetEntityNameFormatter(new TransactionEntityNameFormatter());
                 cfg.Host(transactionConfiguration.ConnectionStrings.RabbitMQ);
+                cfg.MessageTopology.SetEntityNameFormatter(new EntityNameFormatter());
+
+                cfg.UsePublishFilter(typeof(CorrelationContextPublishFilter<>), ctx);
+                cfg.UseSendFilter(typeof(CorrelationContextSendFilter<>), ctx);
+                cfg.UseConsumeFilter(typeof(CorrelationContextConsumeFilter<>), ctx);
+                cfg.UseConsumeFilter(typeof(LoggingScopeConsumeFilter<>), ctx);
+                
                 cfg.UseMessageRetry(retry =>
                     retry.Exponential(10, TimeSpan.FromSeconds(5), TimeSpan.FromSeconds(60), TimeSpan.FromSeconds(5)));
                 cfg.ConfigureEndpoints(ctx);

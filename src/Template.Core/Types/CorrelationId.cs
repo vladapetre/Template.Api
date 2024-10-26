@@ -10,5 +10,5 @@ public readonly record struct CorrelationId
     private CorrelationId(string correlationId) => Id = correlationId;
 
     public static CorrelationId Create(string? correlationId = null) 
-        => new(correlationId ?? Guid.CreateVersion7().ToString("N"));
+        => new(correlationId ?? Guid.CreateVersion7().ToString());
 };
