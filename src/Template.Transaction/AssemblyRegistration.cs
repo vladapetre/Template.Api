@@ -14,12 +14,12 @@ namespace Template.Transaction;
 
 public static class AssemblyRegistration
 {
-    public static IServiceCollection AddPersistence( this IServiceCollection services, IConfiguration configuration )
+    public static IServiceCollection AddTransaction( this IServiceCollection services, IConfiguration configuration )
     {
         var persistenceConfiguration = configuration
-           .GetSection(nameof(PersistenceConfiguration))
-           .Get<PersistenceConfiguration>()
-                ?? throw new ArgumentNullException(nameof(PersistenceConfiguration));
+           .GetSection(nameof(TransactionConfiguration))
+           .Get<TransactionConfiguration>()
+                ?? throw new ArgumentNullException(nameof(TransactionConfiguration));
 
         services.AddDbContext<DatabaseContext>(options =>
         {

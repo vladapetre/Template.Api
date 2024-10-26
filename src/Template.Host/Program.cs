@@ -11,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenApi();
 
 builder.Services.AddApplication();
-builder.Services.AddPersistence(builder.Configuration);
+builder.Services.AddTransaction(builder.Configuration);
 
 builder.Services.AddExceptionHandler<CoreExceptionHandler>();
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();

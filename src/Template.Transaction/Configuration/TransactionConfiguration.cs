@@ -1,6 +1,6 @@
 ﻿namespace Template.Transaction.Configuration;
 
-internal sealed class PersistenceConfiguration
+internal sealed class TransactionConfiguration
 {
     public required ConnectionStrings ConnectionStrings { get; init; }
 }
