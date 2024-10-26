@@ -1,6 +1,7 @@
 POST https://localhost:44393/customers
 Accept: application/json
 Content-Type: application/json
+X-Correlation-ID: vlad-test
 
 { 
   "name" : "Vlad"

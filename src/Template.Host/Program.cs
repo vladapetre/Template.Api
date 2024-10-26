@@ -3,6 +3,8 @@ using Template.Host.Middleware;
 using Template.Transaction;
 using Template.Presentation;
 using Serilog;
+using Template.Core.Contexts;
+using Template.Host.Middleware.Contexts;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +25,8 @@ builder.Services.AddSerilog(( context, config ) =>
     config.Enrich.FromLogContext();
 });
 
+builder.Services.AddScoped<CorrelationContext>((_) => ContextFactory.CreateCorrelationContext);
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -34,6 +38,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseExceptionHandler();
+app.UseMiddleware<CorrelationContextMiddleware>();
 
 app.MapEndpoints();
 
