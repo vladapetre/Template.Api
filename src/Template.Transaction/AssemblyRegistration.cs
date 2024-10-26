@@ -1,5 +1,4 @@
 ﻿using MassTransit;
-using MassTransit.Middleware.InMemoryOutbox;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

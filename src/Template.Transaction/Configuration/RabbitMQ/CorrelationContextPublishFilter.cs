@@ -3,7 +3,7 @@ using Template.Core.Contexts;
 
 namespace Template.Transaction.Configuration.RabbitMQ;
 
-public class CorrelationContextPublishFilter<TMessage> : IFilter<PublishContext<TMessage>>
+internal sealed class CorrelationContextPublishFilter<TMessage> : IFilter<PublishContext<TMessage>>
     where TMessage : class
 {
     private readonly CorrelationContext correlationContext;

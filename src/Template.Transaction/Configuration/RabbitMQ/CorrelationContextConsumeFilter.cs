@@ -4,7 +4,7 @@ using Template.Core.Types;
 
 namespace Template.Transaction.Configuration.RabbitMQ;
 
-public class CorrelationContextConsumeFilter<TMessage> : IFilter<ConsumeContext<TMessage>>
+internal sealed  class CorrelationContextConsumeFilter<TMessage> : IFilter<ConsumeContext<TMessage>>
     where TMessage : class
 {
     private readonly CorrelationContext correlationContext;

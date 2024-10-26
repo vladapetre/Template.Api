@@ -33,7 +33,7 @@ public class CorrelationContextMiddleware
     {
         context.Response.OnStarting(() =>
         {
-            context.Response.Headers.Add(CorrelationIdHeaderName, new[] { correlationContext.CorrelationId.Id });
+            context.Response.Headers.Append(CorrelationIdHeaderName, new[] { correlationContext.CorrelationId.Id });
             return Task.CompletedTask;
         });
     }
