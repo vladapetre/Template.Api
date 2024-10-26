@@ -5,7 +5,7 @@ using Template.Transaction;
 
 var builder = Host.CreateApplicationBuilder(args);
 
-builder.Services.AddScoped<CorrelationContext>(_ => ContextFactory.CreateCorrelationContext);
+builder.Services.AddScoped<CorrelationContext>(_ => ContextFactory.CreateCorrelationContext());
 
 builder.Services.AddTransaction(builder.Configuration, cfg => { cfg.AddConsumer<CustomerCreatedConsumer>(); });
 
