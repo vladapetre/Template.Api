@@ -5,6 +5,7 @@ using Template.Presentation;
 using Serilog;
 using Template.Core.Contexts;
 using Template.Host.Middleware.Contexts;
+using Template.Monitoring;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,7 @@ builder.Services.AddScoped<CorrelationContext>((_) => ContextFactory.CreateCorre
 
 builder.Services.AddApplication();
 builder.Services.AddTransaction(builder.Configuration, null);
+builder.Services.AddMonitoring(builder.Environment);
 
 builder.Services.AddExceptionHandler<CoreExceptionHandler>();
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
