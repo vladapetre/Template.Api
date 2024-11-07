@@ -19,16 +19,8 @@ public static class AssemblyRegistration
                                       .Get<OutboxConfiguration>()
                                   ?? throw new ArgumentNullException(nameof(OutboxConfiguration));
         
-        services.AddDbContext<OutboxDbContext>(options =>
-        {
-            options.UseSqlite(outboxConfiguration.ConnectionStrings.OutboxDbContext,
-                cfg =>
-                {
-                    cfg.MigrationsAssembly(typeof(OutboxDbContext).Assembly.FullName);
-                    cfg.MigrationsHistoryTable($"__EF{nameof(OutboxDbContext)}MigrationsHistory");
-                });
-            
-        });
+        services.AddScoped<IDbContextFactory<OutboxDbContext>, OutboxDbContextFactory>();
+        services.AddScoped<OutboxDbContext>(provider => provider.GetRequiredService<IDbContextFactory<OutboxDbContext>>().CreateDbContext());
         
         services.AddMassTransit(config =>
         {
