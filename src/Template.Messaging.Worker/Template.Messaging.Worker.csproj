@@ -20,6 +20,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Template.Transaction\Template.Transaction.csproj"/>
+        <ProjectReference Include="..\Template.Outbox\Template.Outbox.csproj" />
+        <ProjectReference Include="..\Template.Persistence\Template.Persistence.csproj" />
     </ItemGroup>
 </Project>

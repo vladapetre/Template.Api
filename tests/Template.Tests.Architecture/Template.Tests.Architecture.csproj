@@ -21,7 +21,7 @@
     <ProjectReference Include="..\..\src\Template.Core\Template.Core.csproj" />
     <ProjectReference Include="..\..\src\Template.Domain\Template.Domain.csproj" />
     <ProjectReference Include="..\..\src\Template.Host\Template.Host.csproj" />
-    <ProjectReference Include="..\..\src\Template.Transaction\Template.Transaction.csproj" />
+    <ProjectReference Include="..\..\src\Template.Persistence\Template.Persistence.csproj" />
   </ItemGroup>
 
   <ItemGroup>

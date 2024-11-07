@@ -1,11 +1,12 @@
 using Template.Application;
 using Template.Host.Middleware;
-using Template.Transaction;
+using Template.Persistence;
 using Template.Presentation;
 using Serilog;
 using Template.Core.Contexts;
 using Template.Host.Middleware.Contexts;
 using Template.Monitoring;
+using Template.Outbox;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,8 +17,9 @@ builder.Services.AddOpenApi();
 builder.Services.AddScoped<CorrelationContext>((_) => ContextFactory.CreateCorrelationContext());
 
 builder.Services.AddApplication();
-builder.Services.AddTransaction(builder.Configuration, null);
-builder.Services.AddMonitoring(builder.Environment);
+builder.Services.AddPersistence(builder.Configuration);
+builder.Services.AddOutbox(builder.Configuration, null);
+
 
 builder.Services.AddExceptionHandler<CoreExceptionHandler>();
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();

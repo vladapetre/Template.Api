@@ -12,7 +12,7 @@ public class ApplicationAssemblyConventionTests
     private readonly Assembly coreAssembly = typeof(Core.AssemblyMarker).Assembly;
     private readonly Assembly applicationAssembly = typeof(Application.AssemblyMarker).Assembly;
     private readonly Assembly domainAssembly = typeof(Domain.AssemblyMarker).Assembly;
-    private readonly Assembly persistenceAssembly = typeof(Transaction.AssemblyMarker).Assembly;
+    private readonly Assembly persistenceAssembly = typeof(Persistence.AssemblyMarker).Assembly;
 
     [Fact]
     public void GivenAClassInheritsIRequest_ThenItShouldHaveAppropriateSuffix()
