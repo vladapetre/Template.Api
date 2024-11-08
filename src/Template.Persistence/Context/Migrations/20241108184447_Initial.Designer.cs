@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Template.Persistence.Context;
@@ -12,30 +13,34 @@ using Template.Persistence.Context;
 namespace Template.Persistence.Context.Migrations
 {
     [DbContext(typeof(DatabaseDbContext))]
-    [Migration("20241107190629_Initial")]
+    [Migration("20241108184447_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "8.0.10");
+            modelBuilder
+                .HasAnnotation("ProductVersion", "8.0.10")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("Template.Domain.Components.Customers.Models.Customer", b =>
                 {
                     b.Property<Guid>("Id")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("uniqueidentifier");
 
                     b.ComplexProperty<Dictionary<string, object>>("ApiKey", "Template.Domain.Components.Customers.Models.Customer.ApiKey#ApiKey", b1 =>
                         {
                             b1.IsRequired();
 
                             b1.Property<bool>("Expired")
-                                .HasColumnType("INTEGER")
+                                .HasColumnType("bit")
                                 .HasColumnName("ApiKeyExpired");
 
                             b1.Property<Guid>("Key")
-                                .HasColumnType("TEXT")
+                                .HasColumnType("uniqueidentifier")
                                 .HasColumnName("ApiKey");
                         });
 
@@ -45,7 +50,7 @@ namespace Template.Persistence.Context.Migrations
 
                             b1.Property<string>("Name")
                                 .IsRequired()
-                                .HasColumnType("TEXT")
+                                .HasColumnType("nvarchar(max)")
                                 .HasColumnName("Name");
                         });
 
@@ -54,7 +59,7 @@ namespace Template.Persistence.Context.Migrations
                             b1.IsRequired();
 
                             b1.Property<int>("Type")
-                                .HasColumnType("INTEGER")
+                                .HasColumnType("int")
                                 .HasColumnName("SubscriptionType");
                         });
 

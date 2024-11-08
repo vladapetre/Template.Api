@@ -15,11 +15,11 @@ namespace Template.Persistence.Context.Migrations
                 name: "Customer",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    ApiKeyExpired = table.Column<bool>(type: "INTEGER", nullable: false),
-                    ApiKey = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Name = table.Column<string>(type: "TEXT", nullable: false),
-                    SubscriptionType = table.Column<int>(type: "INTEGER", nullable: false)
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ApiKeyExpired = table.Column<bool>(type: "bit", nullable: false),
+                    ApiKey = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SubscriptionType = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -7,6 +7,5 @@ internal sealed class OutboxConfiguration
 
 internal sealed record ConnectionStrings
 {
-    public required string OutboxDbContext { get; init; }
     public required string RabbitMQ { get; init; }
 }

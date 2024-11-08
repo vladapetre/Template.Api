@@ -2,8 +2,10 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Template.Outbox.Components.Abstract;
 using Template.Outbox.Configuration;
 using Template.Outbox.Context;
+using Template.Persistence.Components.Abstract;
 using Template.Persistence.Context;
 using Template.Transaction.Configuration.RabbitMQ;
 
@@ -28,7 +30,7 @@ public static class AssemblyRegistration
             {
                 cfg.QueryDelay = TimeSpan.FromSeconds(30);
                 cfg.DuplicateDetectionWindow = TimeSpan.FromMinutes(1);
-                cfg.UseSqlite().UseBusOutbox();
+                cfg.UseSqlServer().UseBusOutbox();
             });
             
             config.SetKebabCaseEndpointNameFormatter();
@@ -50,5 +52,7 @@ public static class AssemblyRegistration
 
             configureConsumers?.Invoke(config);
         });
+
+        services.AddScoped<IEventHandler, OutboxEventHandler>();
     }
 }

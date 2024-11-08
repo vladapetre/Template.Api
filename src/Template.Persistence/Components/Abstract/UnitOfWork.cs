@@ -1,4 +1,5 @@
-﻿using Template.Application.Components.Abstract.Persistence;
+﻿using System.Transactions;
+using Template.Application.Components.Abstract.Persistence;
 using Template.Application.Components.Customers.Persistence;
 using Template.Core.Extensions;
 using Template.Core.Primitives;
@@ -6,15 +7,18 @@ using Template.Persistence.Context;
 
 namespace Template.Persistence.Components.Abstract;
 
-public class UnitOfWork : IUnitOfWork
+public sealed class UnitOfWork : IUnitOfWork
 {
     private readonly DatabaseDbContext dbContext;
+    private readonly IEventHandler eventHandler;
 
     public UnitOfWork( 
         DatabaseDbContext dbContext,
+        IEventHandler eventHandler,
         ICustomerRepository customers)
     {
         this.dbContext = dbContext;
+        this.eventHandler = eventHandler;
         Customers = customers;
     }
 
@@ -22,20 +26,27 @@ public class UnitOfWork : IUnitOfWork
 
     public async Task SaveChangesAsync( CancellationToken cancellationToken = default )
     {
+        using var scope = new TransactionScope(
+            TransactionScopeOption.Required,
+            new TransactionOptions()
+            {
+                IsolationLevel = IsolationLevel.RepeatableRead,
+            });
+        
         var entities = dbContext.ChangeTracker
             .Entries<Entity>()
             .Select(entry => entry.Entity)
             .ToList();
 
-        await  entities
+        await entities
             .SelectMany(entity => entity.Events)
-            .ExecuteAsync( (e) =>  PublishEventAsync(e, cancellationToken));
+            .ExecuteAsync(( e ) => PublishEventAsync(e, cancellationToken));
 
         entities.Execute(entity => entity.ClearEvents());
 
         await dbContext.SaveChangesAsync(cancellationToken);
     }
 
-    protected virtual Task PublishEventAsync<TEvent>( TEvent @event, CancellationToken cancellationToken )
-        where TEvent : class, IEvent => Task.CompletedTask;
+    private Task PublishEventAsync<TEvent>( TEvent @event, CancellationToken cancellationToken )
+        where TEvent : IEvent => eventHandler.HandleAsync(@event, cancellationToken);
 }

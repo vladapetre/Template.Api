@@ -7,7 +7,6 @@ using Template.Core.Contexts;
 using Template.Persistence.Components.Abstract;
 using Template.Persistence.Components.Customers;
 using Template.Persistence.Context;
-using Template.Persistence.Configuration;
 
 namespace Template.Persistence;
 

@@ -15,7 +15,7 @@ public class DatabaseDbContextFactory : IDbContextFactory<DatabaseDbContext>
     public DatabaseDbContext CreateDbContext()
     {
         var databaseDbContextOptions = new DbContextOptionsBuilder<DatabaseDbContext>()
-            .UseSqlite(sqlConnectionContext.SqliteConnection, cfg =>
+            .UseSqlServer(sqlConnectionContext.SqlConnection, cfg =>
             {
                 cfg.MigrationsAssembly(typeof(DatabaseDbContext).Assembly.FullName);
                 cfg.MigrationsHistoryTable($"__EF{nameof(DatabaseDbContext)}MigrationsHistory");

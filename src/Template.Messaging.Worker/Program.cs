@@ -7,7 +7,7 @@ using Template.Persistence;
 var builder = Host.CreateApplicationBuilder(args);
 
 builder.Services.AddScoped<CorrelationContext>(_ => ContextFactory.CreateCorrelationContext());
-builder.Services.AddScoped<SqlConnectionContext>((_) => ContextFactory.CreateSqlConnectionContext("Data Source=../../template.db"));
+builder.Services.AddScoped<SqlConnectionContext>((_) => ContextFactory.CreateSqlConnectionContext(builder.Configuration.GetConnectionString("Database")!));
 
 
 builder.Services.AddOutbox(builder.Configuration, cfg => { cfg.AddConsumer<CustomerCreatedConsumer>(); });

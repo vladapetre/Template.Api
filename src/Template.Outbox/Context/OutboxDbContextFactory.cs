@@ -15,10 +15,10 @@ public class OutboxDbContextFactory : IDbContextFactory<OutboxDbContext>
     public OutboxDbContext CreateDbContext()
     {
         var outboxDbContextOptions = new DbContextOptionsBuilder<OutboxDbContext>()
-            .UseSqlite(sqlConnectionContext.SqliteConnection, cfg =>
+            .UseSqlServer(sqlConnectionContext.SqlConnection, cfg =>
             {
                 cfg.MigrationsAssembly(typeof(OutboxDbContext).Assembly.FullName);
-                cfg.MigrationsHistoryTable($"__EF{nameof(OutboxDbContext)}MigrationsHistory");
+                cfg.MigrationsHistoryTable($"__EF{nameof(OutboxDbContext)}MigrationsHistory", schema:"outbox");
             });
         
         return new OutboxDbContext(outboxDbContextOptions.Options);
