@@ -1,4 +1,5 @@
-﻿using Template.Application.Components.Abstract.Persistence;
+﻿using System.Transactions;
+using Template.Application.Components.Abstract.Persistence;
 using Template.Application.Components.Abstract.Requests;
 using Template.Core.Types;
 using Template.Domain.Components.Customers.Models;
@@ -21,7 +22,16 @@ public sealed class CreateCustomerCommandHandler : ICreateCustomerCommandHandler
         var customer = await Customer.Create(request.Name)
             .ContinueAsync(unitOfWork.Customers.AddAsync);
 
+        // using var scope = new TransactionScope(
+        //     TransactionScopeOption.Required,
+        //     new TransactionOptions()
+        //     {
+        //         IsolationLevel = IsolationLevel.RepeatableRead,
+        //     });
+        
         await unitOfWork.SaveChangesAsync();
+        
+        // scope.Complete();
 
         return customer.GetValueOrThrow(new NotImplementedException());
     }

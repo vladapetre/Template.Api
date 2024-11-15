@@ -26,13 +26,6 @@ public sealed class UnitOfWork : IUnitOfWork
 
     public async Task SaveChangesAsync( CancellationToken cancellationToken = default )
     {
-        using var scope = new TransactionScope(
-            TransactionScopeOption.Required,
-            new TransactionOptions()
-            {
-                IsolationLevel = IsolationLevel.RepeatableRead,
-            });
-        
         var entities = dbContext.ChangeTracker
             .Entries<Entity>()
             .Select(entry => entry.Entity)

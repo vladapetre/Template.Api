@@ -14,8 +14,7 @@ public static class AssemblyRegistration
 {
     public static void AddPersistence(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddScoped<IDbContextFactory<DatabaseDbContext>, DatabaseDbContextFactory>();
-        services.AddScoped<DatabaseDbContext>(provider => provider.GetRequiredService<IDbContextFactory<DatabaseDbContext>>().CreateDbContext());
+        services.AddScoped<DatabaseDbContext>(DatabaseDbContextFactory.CreateDatabaseDbContext);
         
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<ICustomerRepository, CustomerRepository>();

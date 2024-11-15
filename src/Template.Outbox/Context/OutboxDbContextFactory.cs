@@ -1,19 +1,15 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Template.Core.Contexts;
 
 namespace Template.Outbox.Context;
 
-public class OutboxDbContextFactory : IDbContextFactory<OutboxDbContext>
+public static class OutboxDbContextFactory 
 {
-    private readonly SqlConnectionContext sqlConnectionContext;
-
-    public OutboxDbContextFactory(SqlConnectionContext sqlConnectionContext)
+    public static OutboxDbContext CreateOutboxDbContext(IServiceProvider serviceProvider)
     {
-        this.sqlConnectionContext = sqlConnectionContext;
-    }
-    
-    public OutboxDbContext CreateDbContext()
-    {
+        var sqlConnectionContext = serviceProvider.GetRequiredService<SqlConnectionContext>();
+        
         var outboxDbContextOptions = new DbContextOptionsBuilder<OutboxDbContext>()
             .UseSqlServer(sqlConnectionContext.SqlConnection, cfg =>
             {

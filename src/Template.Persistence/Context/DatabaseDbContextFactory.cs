@@ -1,19 +1,15 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Template.Core.Contexts;
 
 namespace Template.Persistence.Context;
 
-public class DatabaseDbContextFactory : IDbContextFactory<DatabaseDbContext>
+public static class DatabaseDbContextFactory 
 {
-    private readonly SqlConnectionContext sqlConnectionContext;
-
-    public DatabaseDbContextFactory(SqlConnectionContext sqlConnectionContext)
+    public static DatabaseDbContext CreateDatabaseDbContext(IServiceProvider serviceProvider)
     {
-        this.sqlConnectionContext = sqlConnectionContext;
-    }
-    
-    public DatabaseDbContext CreateDbContext()
-    {
+        var sqlConnectionContext = serviceProvider.GetRequiredService<SqlConnectionContext>();
+        
         var databaseDbContextOptions = new DbContextOptionsBuilder<DatabaseDbContext>()
             .UseSqlServer(sqlConnectionContext.SqlConnection, cfg =>
             {

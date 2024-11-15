@@ -21,8 +21,7 @@ public static class AssemblyRegistration
                                       .Get<OutboxConfiguration>()
                                   ?? throw new ArgumentNullException(nameof(OutboxConfiguration));
         
-        services.AddScoped<IDbContextFactory<OutboxDbContext>, OutboxDbContextFactory>();
-        services.AddScoped<OutboxDbContext>(provider => provider.GetRequiredService<IDbContextFactory<OutboxDbContext>>().CreateDbContext());
+        services.AddScoped<OutboxDbContext>(OutboxDbContextFactory.CreateOutboxDbContext);
         
         services.AddMassTransit(config =>
         {

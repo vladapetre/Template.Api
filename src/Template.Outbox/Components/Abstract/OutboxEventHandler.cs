@@ -21,6 +21,6 @@ public class OutboxEventHandler : IEventHandler
         where TEvent : IEvent
     {
         await publishEndpoint.Publish(@event as object, cancellationToken);
-        //await outboxDbContext.SaveChangesAsync(cancellationToken);
+        await outboxDbContext.SaveChangesAsync(cancellationToken);
     }
 }
