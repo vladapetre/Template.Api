@@ -1,5 +1,4 @@
-﻿using MassTransit;
-using Template.Application.Components.Abstract.Persistence;
+﻿using Template.Application.Components.Abstract.Persistence;
 using Template.Application.Components.Customers.Persistence;
 using Template.Core.Extensions;
 using Template.Core.Primitives;
@@ -10,16 +9,13 @@ namespace Template.Transaction.Components.Abstract;
 internal sealed class UnitOfWork : IUnitOfWork
 {
     private readonly DatabaseContext context;
-    private readonly IPublishEndpoint publishEndpoint;
 
     public UnitOfWork( 
         DatabaseContext context,
-        ICustomerRepository customers,
-        IPublishEndpoint publishEndpoint)
+        ICustomerRepository customers)
     {
         this.context = context;
-        this.publishEndpoint = publishEndpoint;
-        Customers = customers;
+        this.Customers = customers;
     }
 
     public ICustomerRepository Customers { get; }
@@ -41,5 +37,5 @@ internal sealed class UnitOfWork : IUnitOfWork
     }
 
     private async Task PublishEventAsync<TEvent>( TEvent @event, CancellationToken cancellationToken ) where TEvent : class, IEvent  =>
-        await publishEndpoint.Publish(@event as object,cancellationToken);
+        await Task.CompletedTask;
 }

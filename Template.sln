@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template.Tests.Architecture
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template.Domain", "src\Template.Domain\Template.Domain.csproj", "{1DFFEEFD-65C3-499B-8D76-A8254A5BE14E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template.Transaction", "src\Template.Transaction\Template.Transaction.csproj", "{EC0B9288-6338-482F-AA0F-E1451DCB0A97}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template.Persistence", "src\Template.Persistence\Template.Persistence.csproj", "{EC0B9288-6338-482F-AA0F-E1451DCB0A97}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template.Host", "src\Template.Host\Template.Host.csproj", "{6BC6F0FF-2324-4EDA-8F94-9DF188328621}"
 EndProject
@@ -26,8 +26,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template.Presentation", "src\Template.Presentation\Template.Presentation.csproj", "{03120C7F-BDEC-4E9C-8CAC-6C865D632E27}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template.Messaging.Worker", "src\Template.Messaging.Worker\Template.Messaging.Worker.csproj", "{A796B2E4-E94C-4134-902F-3D43D1A9EB5C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template.Monitoring", "src\Template.Monitoring\Template.Monitoring.csproj", "{930B7E5A-B6C9-4F85-A502-2AC9A0A5FDB3}"
 EndProject
@@ -65,10 +63,6 @@ Global
 		{03120C7F-BDEC-4E9C-8CAC-6C865D632E27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03120C7F-BDEC-4E9C-8CAC-6C865D632E27}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03120C7F-BDEC-4E9C-8CAC-6C865D632E27}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A796B2E4-E94C-4134-902F-3D43D1A9EB5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A796B2E4-E94C-4134-902F-3D43D1A9EB5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A796B2E4-E94C-4134-902F-3D43D1A9EB5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A796B2E4-E94C-4134-902F-3D43D1A9EB5C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{930B7E5A-B6C9-4F85-A502-2AC9A0A5FDB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{930B7E5A-B6C9-4F85-A502-2AC9A0A5FDB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{930B7E5A-B6C9-4F85-A502-2AC9A0A5FDB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -85,7 +79,6 @@ Global
 		{EC0B9288-6338-482F-AA0F-E1451DCB0A97} = {C386230D-4175-4D37-BF9C-290B4CFA49B9}
 		{6BC6F0FF-2324-4EDA-8F94-9DF188328621} = {C386230D-4175-4D37-BF9C-290B4CFA49B9}
 		{03120C7F-BDEC-4E9C-8CAC-6C865D632E27} = {C386230D-4175-4D37-BF9C-290B4CFA49B9}
-		{A796B2E4-E94C-4134-902F-3D43D1A9EB5C} = {C386230D-4175-4D37-BF9C-290B4CFA49B9}
 		{930B7E5A-B6C9-4F85-A502-2AC9A0A5FDB3} = {C386230D-4175-4D37-BF9C-290B4CFA49B9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution

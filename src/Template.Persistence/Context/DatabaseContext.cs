@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using Template.Domain.Components.Customers.Models;
 
@@ -17,9 +16,5 @@ public sealed class DatabaseContext : DbContext
     protected override void OnModelCreating( ModelBuilder modelBuilder )
     {
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-
-        modelBuilder.AddInboxStateEntity();
-        modelBuilder.AddOutboxMessageEntity();
-        modelBuilder.AddOutboxStateEntity();
     }
 }

@@ -16,7 +16,7 @@ builder.Services.AddOpenApi();
 builder.Services.AddScoped<CorrelationContext>((_) => ContextFactory.CreateCorrelationContext());
 
 builder.Services.AddApplication();
-builder.Services.AddTransaction(builder.Configuration, null);
+builder.Services.AddPersistence(builder.Configuration);
 builder.Services.AddMonitoring(builder.Environment);
 
 builder.Services.AddExceptionHandler<CoreExceptionHandler>();
