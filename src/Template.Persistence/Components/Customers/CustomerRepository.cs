@@ -6,9 +6,9 @@ namespace Template.Transaction.Components.Customers;
 
 internal sealed class CustomerRepository : ICustomerRepository
 {
-    private readonly DatabaseContext databaseContext;
+    private readonly DatabaseDbContext databaseContext;
 
-    public CustomerRepository( DatabaseContext databaseContext )
+    public CustomerRepository( DatabaseDbContext databaseContext )
     {
         this.databaseContext = databaseContext;
     }

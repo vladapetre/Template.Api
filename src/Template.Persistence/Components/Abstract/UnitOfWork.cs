@@ -8,10 +8,10 @@ namespace Template.Transaction.Components.Abstract;
 
 internal sealed class UnitOfWork : IUnitOfWork
 {
-    private readonly DatabaseContext context;
+    private readonly DatabaseDbContext context;
 
     public UnitOfWork( 
-        DatabaseContext context,
+        DatabaseDbContext context,
         ICustomerRepository customers)
     {
         this.context = context;

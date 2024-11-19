@@ -1,4 +1,4 @@
-POST https://localhost:44393/customers
+POST https://localhost:7030/customers
 Accept: application/json
 Content-Type: application/json
 X-Correlation-ID: vlad-test

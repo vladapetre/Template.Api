@@ -4,11 +4,11 @@ using Template.Domain.Components.Customers.Models;
 
 namespace Template.Transaction.Context;
 
-public sealed class DatabaseContext : DbContext
+public sealed class DatabaseDbContext : DbContext
 {
     public DbSet<Customer> Customer { get; init; }
 
-    public DatabaseContext( DbContextOptions<DatabaseContext> options )
+    public DatabaseDbContext( DbContextOptions<DatabaseDbContext> options )
         : base(options)
     {
     }

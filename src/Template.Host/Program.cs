@@ -17,7 +17,7 @@ builder.Services.AddScoped<CorrelationContext>((_) => ContextFactory.CreateCorre
 
 builder.Services.AddApplication();
 builder.Services.AddPersistence(builder.Configuration);
-builder.Services.AddMonitoring(builder.Environment);
+// builder.Services.AddMonitoring(builder.Environment);
 
 builder.Services.AddExceptionHandler<CoreExceptionHandler>();
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();

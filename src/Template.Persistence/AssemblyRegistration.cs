@@ -19,13 +19,13 @@ public static class AssemblyRegistration
                                            .Get<TransactionConfiguration>()
                                        ?? throw new ArgumentNullException(nameof(TransactionConfiguration));
 
-        services.AddDbContext<DatabaseContext>(options =>
+        services.AddDbContext<DatabaseDbContext>(options =>
         {
             options.UseSqlite(transactionConfiguration.ConnectionStrings.DatabaseContext,
                 cfg =>
                 {
-                    cfg.MigrationsAssembly(typeof(DatabaseContext).Assembly.FullName);
-                    cfg.MigrationsHistoryTable($"__EF{nameof(DatabaseContext)}MigrationsHistory");
+                    cfg.MigrationsAssembly(typeof(DatabaseDbContext).Assembly.FullName);
+                    cfg.MigrationsHistoryTable($"__EF{nameof(DatabaseDbContext)}MigrationsHistory");
                 });
         });
 
